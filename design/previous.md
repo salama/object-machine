@@ -2,7 +2,7 @@
 
 While we hope to make a meaningful step in the art, this has by no means been the first effort, even with very or very very, similar goals.
 
-## Mother smalltalk
+### Mother smalltalk
 
 Like no other work Smalltalk-80, and especially the "Blue book" Smalltalk-80: the languge and it's implentation has influenced the success of object oriented thinking. Smalltalk is very pure in it's object oriented aproach and tries to extend that as far as possible into the implementation aspect.
 
@@ -12,7 +12,7 @@ Smalltalk introduced the method of value tagging in which the essential runtime 
 
 Without any categorization attemps lets call Smalltalk-80 a first generation object machine.
 
-##  Jvm, Squeak
+###  Jvm, Squeak
 
 Java is quite rare in object oriented languages inthat it has a complete and rigorous intruction set. Alas this instruciton set is biased, though not completely, towards java. This is shown by the fact that several other object oriented languages are implemented on top of jvm.
 
@@ -20,18 +20,18 @@ The jvm is also c based, but used just in time compilation to compile often used
 
 Let's call this aproach second generation.
 
-## Rubinius
+### Rubinius
 
 Rubinius is a ruby implementation which is first to even attempt a complete object oriented implementation.
 It's core is implemented in c++, but it exposes c++ object as sort of meta-constant ruby objects. Those object may receive normal methods and as such work, but their meta-programming capabilities are restricted to c++.
 
 Rubinius also uses a jit. Let's call this generation 2.5 , as it is very close to a pure object.
 
-## 3'rd generation
+### 3'rd generation
 
 In the above terminology we are defining (and implementing) a third generation object machine. This will be marked by being completely object based and neither using c for code generation.
 
-## Virtual C machine
+### Virtual C machine
 
 All above examples use existing c or c tools for machine code generation. These tools (compilers/jits) implement the c machine and as such above aproaches all sit on top of that c machine.
 

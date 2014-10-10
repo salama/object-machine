@@ -4,11 +4,11 @@ This chapter defines our actual design goal and also principles we want to adher
 
 Our primary goal is to design a language independent native object machine capable of running object oriented languages.
 
-To do this we will have to define what makes a machine and what characterises an object oriented language. We will see how similar things were done previously, and how to "build" the initial version of such a mchine on curretn hardware.
+To do this we will have to define what makes a machine and what characterises an object oriented language. We will see how similar things were done previously, and how to "build" the initial version of such a mchine on current hardware.
 
-## Design principles
+### Design principles
 
-But before we start with designing the actual machine, let's define guiding principles. Principles that will guide the decision we have to make on the way.
+But before we start with designing the actual machine, let's define guiding principles. Principles that will guide the decisions we have to make on the way.
 
 #### Simple
 
@@ -21,7 +21,7 @@ This is almost implied in simplicity, because when a design is minimal it usuall
 
 If you can leave it out, do.
 
-### Complete
+#### Complete
 
 This is just here for completeness, as it is almost implied in above statement.
 

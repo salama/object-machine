@@ -4,7 +4,7 @@ Since the implementation of the machine is not physical, we will need to create 
 
 A basic understanding nevertheless helps to understand the design of the machine better.
 
-### Compiler bootstrap
+#### Compiler bootstrap
 
 Since a compiler is familiar to every programmar, let's start by looking at a how that bootstraps itself. A jiting virtual machine build on that, but makes the distinction of compile and runtime more complicated.
 
@@ -24,7 +24,7 @@ CX should be functionaly identical to CY, that is for every input given to CX an
 
 The process relies off course on a previous implementation of the language, CC in this case.
 
-## Machine bootstrap
+### Machine bootstrap
 
 To use a similar bootstrap process as described, we need a language with an exising implementation. We choose ruby and call the existing machine rbx, but note that it does not matter which implementation we use.
 

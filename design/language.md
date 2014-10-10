@@ -2,7 +2,7 @@
 
 To define the object machine, we need to define what makes a machine. And since the purpose of the machine is to run object oriented programs, we need to talk a bit about what those are. We start with the language as this is more familiar to software engineers.
 
-## OO language features
+### OO language features
 
 Since Smalltalk, many object oriented language have been defined and implemented. These differ in syntax, how dynamic they are, and which oo features they implement. Especially how dynamic they are has determined if they are compiled or interpreted.
 
@@ -30,13 +30,13 @@ This includes Methods and the state of the machine, in other words it supports c
 
 Exceptions are an alternate return path over potentially many method invocations. We support raising and catching exceptions, ensure and retry.
 
-## Object Machine
+### Object Machine
 
 A machine capable of running programs defined by an object oriented language as scetched above, can be and has been implemented in many ways.
 
 Our main requirement is that the machine too be what is called object oriented in languages.
 
-### Object based
+#### Object based
 
 Instead of calling it object oriented, the machine is really object based, ie based on objects, not oriented towards them. And even based seems a little verbose as it is really made up of just objects, so we call it object machine.
 
@@ -44,7 +44,7 @@ So we aim to define a set of objects, including a set of instructions, that can 
 
 As defining the objects as pure data structures is somewhat against the working of the human brain, we will define them in an object oriented language and then define a method to externalise them in a language indepenedant manner. The language of choice is ruby, but it should be noted that parsing ruby is not part of the object machine functionality.
 
-### Instruction Set
+#### Instruction Set
 
 Even when defining the machine in a language, when externalised, it is pure data. There is no functionality in it.
 
@@ -52,7 +52,7 @@ So we need to define a Set of Instructions and their meaning to define what the 
 
 Off course Instructions, like classes, are objects. For the machine to have defined behaviou, we need to define what the instructions do in terms of the other object of the machine.
 
-### Explicit values
+#### Explicit values
 
 We make explict distinction between objects and values, which has often tried to be blurred.
 

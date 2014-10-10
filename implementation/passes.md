@@ -1,4 +1,4 @@
-# Assembly
+## Assembly
 
 Assembly language is normally a text format of instruction memnonics with arguments that represent registers or numbers or switches. Assembling is then the parsing and convertion into a binary format. Since we have no external format for the Arm Instruction we call the process of creating binary encoded data from these instructions assembling.
 

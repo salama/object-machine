@@ -7,7 +7,7 @@ For many people object oriented languages are synonymous with slow. This is espe
 
 Let's look at both of those reasons and see how they relate to our object machine.
 
-### Interpretation
+#### Interpretation
 
 There are several reaons to choose interpretation over compilation, and which is the most important of those will depend on the person or organisation making the choice.
 
@@ -22,7 +22,7 @@ Nevertheless other languages have ad-hoc, or implicitly, defined instruction set
 
 In summary, while interpretation leads to an easy start and portable code, it neccessarily creates run-time overhead that can not be changed (or never has been). It also leads to a black box from the target language programmar.
 
-### Compilation
+#### Compilation
 
 The most well known example of an object oriented language that is compiled to executables is c++. C++, or c with classes as it was called in the beginning, started out by compiling to c. Later librabies were created and direct compilation to machine code implemented. The approach would probably still work, not least because c++ is not very dynamic.
 
@@ -32,7 +32,7 @@ Another less well known, and much more recent, example is the crystal language (
 
 As far as we know full compilation of a dynamic object oriented language has never been achieved.
 
-## Dynamic vs. static
+### Dynamic vs. static
 
 Object oriented languages are dynamic to a larger or smaller extent. C++ is probably there at the end of less dynamic while Smalltalk and ruby are as dynamic as possible. And when looking at the performance of these languages, even trying to calculate the compilation vs interpretation out of the equation, one is left with the fact that more dynamic means slower.
 This is understandable as dynamic at runtime means work at runtime and work takes time.
