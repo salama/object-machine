@@ -1,0 +1,11 @@
+{
+    "plugins": [],
+    "pluginsConfig": {},
+    "version": "0.0.0",
+    "description": "",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/dancinglightning/object-machine.git"
+    },
+    "author": "Torsten <torsten@villataika.fi>"
+}
