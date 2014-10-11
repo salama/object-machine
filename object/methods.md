@@ -1,4 +1,4 @@
-# Methods and Blocks
+## Methods and Blocks
 
 objects have instance variables
 some methods

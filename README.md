@@ -14,8 +14,9 @@ This is not a scientific book, rather written by an enthusiast. As such it hopes
 - how to build languages
 - how oo is implemented
 - virtual machines
+- an overview of salama project
 
-this should be interesing. Also this is a community book, so if you find something that is unclear or could be improved, do tell.
+this should be interesing. Also this is an open source book, so if you find something that is unclear or could be improved, file an [issue in github](https://github.com/dancinglightning/object-machine/issues).
 
 ### Outline
 

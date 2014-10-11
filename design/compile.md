@@ -1,4 +1,4 @@
-# Interpret and Compile
+## Interpret and Compile
 
 For many people object oriented languages are synonymous with slow. This is especially strange since even early Smalltalk implementations had native gui's. But mostly it is a misconception fueled by two facts:
 

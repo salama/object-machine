@@ -1,4 +1,4 @@
-# Previous work
+## Previous work
 
 While we hope to make a meaningful step in the art, this has by no means been the first effort, even with very or very very, similar goals.
 

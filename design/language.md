@@ -1,4 +1,4 @@
-# Machine and Language
+## Machine and Language
 
 To define the object machine, we need to define what makes a machine. And since the purpose of the machine is to run object oriented programs, we need to talk a bit about what those are. We start with the language as this is more familiar to software engineers.
 

@@ -1,4 +1,4 @@
-# Bootstrapping
+## Bootstrapping
 
 Since the implementation of the machine is not physical, we will need to create an executable. This is a multi-step process that we will go into in the implementation chapter. The result will provide an excellent test as the machine will ultimately need to be able to recreate itself.
 

@@ -1,4 +1,4 @@
-# Executable
+## Executable
 
 During assembly, binary versions of the instructions are created. Blocks contain a list of Instructions and thus get converted to a stream of binary. Methods in turn have a list of blocks and so the whole Method become a binary stream.
 

@@ -1,4 +1,4 @@
-# Arm instructions
+## Arm instructions
 
 The arm architecture, or versions of the arm architecture, are the most common cpu today. This is in part due to the low power consumption, which may in turn be attributed to the simple design and low transistor count. A typical arm processor has 60 thousand transistors, while a modern intel has over 3 billion.
 

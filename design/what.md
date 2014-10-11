@@ -1,4 +1,4 @@
-# What and how
+## What and how
 
 This chapter defines our actual design goal and also principles we want to adhere to while designing.
 
