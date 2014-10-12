@@ -4,7 +4,7 @@ To define the object machine, we need to define what makes a machine. And since 
 
 ### OO language features
 
-Since Smalltalk, many object oriented language have been defined and implemented. These differ in syntax, how dynamic they are, and which oo features they implement. Especially how dynamic they are has determined if they are compiled or interpreted.
+Since Smalltalk, many object oriented languages have been defined and implemented. These differ in syntax, how dynamic they are, and which oo features they implement. Especially how dynamic they are has determined if they are compiled or interpreted.
 
 Our goal is to be language independant, this is why we design a machine and not a language. Still, we would like our machine to be able to run as many languages as possible, so we need to make the desired features explicit. This we do with an eye to what can be implemented on top of another. If we take object encapsulation as an example: it is impossible to implement encapsulation when the machine allows unrestricted object access, but trivial to implement free access on top of encapsulation via hidden accessors.
 
@@ -12,19 +12,19 @@ Our goal is to be language independant, this is why we design a machine and not 
 
 The machine must off course support the idea of objects, and as outlined above, we choose full data hiding. This means only the object has access to its internal state (data).
 
-Also each object has a class that may not change during it's lifecycle. A class may derive from other classes and derivation may change. As in ruby we call classes that can not be instantiated modules. Singleton classes are not only supported but integral to the machine.
+Also each object has a class that may not change during it's lifecycle. A class may derive from other classes and derivation may change. As in ruby we call classes that can not be instantiated modules. Eigenclasses are not only supported but integral to the machine.
 
 #### Message passing
 
 Object oriented message passing must be possible. Message passing, as opposed to function calling, resolves the function to be called at runtime.
 
-This does not exclude function calling, which indeed must be supported too for cases when the receiver is fully determined, as for example in class methods.
+This does not exclude function calling, which indeed must be supported too. Not only for cases when the receiver is fully determined, as for example in class methods, but also to be able to implement message passing.
 
 #### Fully dynamic
 
 The goal is that all aspects of the machine are available to be changed at run-time.
 
-This includes Methods and the state of the machine, in other words it supports closures.
+This includes Methods and the state of the machine, in other words it supports closures. But also the class hierachy in all it's aspects and the type system of basic values.
 
 #### Exceptions
 

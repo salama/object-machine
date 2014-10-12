@@ -3,7 +3,7 @@
 For many people object oriented languages are synonymous with slow. This is especially strange since even early Smalltalk implementations had native gui's. But mostly it is a misconception fueled by two facts:
 
 - many object oriented language implementations choose to interpret
-- object oriented languages are dynamic and that means more work at runtime
+- object oriented languages are dynamic and thus integrate many more features into the language
 
 Let's look at both of those reasons and see how they relate to our object machine.
 
@@ -39,7 +39,7 @@ This is understandable as dynamic at runtime means work at runtime and work take
 
 At the moment we have to say that *theortically* one could optimze the dynamic code much more. One could *imagine* that if the same amount of time and expertise were spent on that, it would result in much improved performance.
 
-Especially if the implementation language would be the target language and we wouldn't have the mismatch, all optimisations would just be more target language code. The emergence of llvm proves this as a valid direction. By using an object oriented language (llvm is written in c++), it made the task more aunderstandable. Alos gcc had grown over the years and decades and the internal languages used to ease the tasks that c makes hard were difficult to understand.
+Especially if the implementation language would be the target language and we wouldn't have the mismatch, all optimisations would just be more target language code. The emergence of llvm proves this as a valid direction. By using an object oriented language (llvm is written in c++), it made the task more aunderstandable. Also gcc had grown over the years and decades and the internal languages used to ease the tasks that c makes hard were difficult to understand.
 
 We hope to prove this theory, that a same language implementation will result in speed improvements.
 
