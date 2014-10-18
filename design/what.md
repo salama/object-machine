@@ -21,9 +21,8 @@ This is almost implied in simplicity, because when a design is minimal it usuall
 
 If you can leave it out, do.
 
-#### Complete
+#### Extensible
 
-This is just here for completeness, as it is almost implied in above statement.
+Since we want to design a minimal system, it needs to be extensible easily. And as it is an open system, easily means a mechnism by which anyone can define more functionality for the machine. Off course with open classes wóne can always patch, but this is not what we mean. rather a defined interface for at least the central parts of type system and instruction set.
 
-Completeness means we achieve the set goal, which we will define in the next chapter. At a high level one could compare the machine to a real one and say it is mostly about creating capabilities. By no means do we aim to create any full language implementation, only the basis upon which a language can be implemented in an object oriented manner. The object machine should be to object oriented languages what a physical machine is to c.
-
+This also encourages external developers to improve the machine for different hardware or use cases. While obvious examples include cpu/os combinations, also gpu or mmu support should be possible.
