@@ -11,7 +11,6 @@
    * [Types and Classes](object/types.md)
    * [Methods and Blocks](object/methods.md)
    * [Instruction Set](object/instructions.md)
-   * [Object Space](object/object_space.md)
    * [Layers and Passes](object/layers_and_passes.md)
 * [Register Machine](register/machine.md)
    * [Register use](register/naming.md)
