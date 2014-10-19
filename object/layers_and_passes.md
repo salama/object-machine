@@ -26,13 +26,13 @@ The Arm architecture is a simple RISC machine. It is a register based architectu
 
 ### Passes
 
-Since we have now defined the layers we shall use, the process of generating an executable becomes tumbling down those layers. We need to define the Object Machine in terms of the Register Machine, and then the Register in terms of the Arm machine. But this is true for the instructions only, other object machines objects stay valid.
+Since we have now defined the layers we shall use, the process of generating an executable becomes tumbling down those layers. We need to define the Object Machine in terms of the Register Machine, and then the Register in terms of the Arm machine. But this is true for the instructions only, other of the machines objects stay valid.
 
-This and other reasons have prompted us to use an iterative aproach to the conversion process. We call these Iterations Passes. A Pass runs, or passes, over the instruction stream and changes it as it sees fit.
+This and other reasons have prompted us to use an iterative aproach to the conversion process. We call these iterations Passes. A Pass runs, or passes, over the instruction stream and changes it as it sees fit.
 
 The result of all Passes of a layer results in the desired transformation from one machine instraction set to another. In other words the set of one machines Passes represent a compilation to that machine.
 
-A simple example would be how the register machine implements the object machine Set instruction. While adherring to some register layout, the Set is replaced by two instructions, one load and one store. A trivial example is how the arm machine later transforms a load into ldr (the arm **l**oa**d** **r**register) 
+A simple example would be how the register machine implements the object machine Set instruction. While adherring to some register layout, the Set is replaced by two instructions, one load and one store. A trivial example is how the arm machine later transforms a load into ldr (the arm **l**oa**d** **r**egister)
 
 There are several advantages to using Passes, which are mainly related to the fact that the data structure we work on is "intact", though it may be partial. At any point in the process one can for example take a snapshot of the state in a human readable format (sof). Other advantages are :
 
@@ -46,4 +46,4 @@ Passes are registered at object space level and can ordered before or after othe
 The observant reader will have noticed that there are some object machine instructions that possibly resolve to other object machine instructions. So the object machine itself makes use of the Pass architecture and transforms its own MessageSend instruction to it's own instructions, including a MessageCall.
 
 Both following chapters about the definition of the Register Machine and the Arm implementation rely heavily on this Pass architecture.
- 
+
