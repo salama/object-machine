@@ -18,7 +18,7 @@
    * [Passes](register/passes.md)
 * [Implementation](implementation/into.md)
    * [Arm instructions](implementation/instructions.md)
-   * [Assembly](implementation/passes.md)
+   * [Assembly](implementation/assembly.md)
    * [Executable](implementation/elf.md)
 * [Appendix](appendix/sof.md)
    * [Object file](appendix/sof.md)
