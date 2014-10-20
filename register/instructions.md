@@ -24,7 +24,7 @@ RegisterTransfer transfers data from one register to another. This is used in th
 
 ### SaveReturn
 
-SaveReturn is very much like a SetSlot, but the data is implicit, namely the return address. The instruciton abstracts the place where the actual machine stores the address. The address is stored in the register/offset combination given.
+SaveReturn is very much like a SetSlot, but the data is implicit, namely the return address. The instruction abstracts the place where the actual machine stores the address. The address is stored in the register/offset combination given.
 
 ### FunctionCall
 
@@ -32,7 +32,7 @@ Transfers control to the given Method. At register level this does not do any se
 
 ### RegisterMain
 
-This instruciton sets up the machine and starts execution at the method given. This is seperate from the FunctionCall to allow for different implementations of both the set and the initial control transfer.
+This instruction sets up the machine and starts execution at the method given. This is seperate from the FunctionCall to allow for different implementations of both the set and the initial control transfer.
 
 ### LoadConstant
 

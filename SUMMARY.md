@@ -15,8 +15,11 @@
 * [Register Machine](register/machine.md)
    * [Register use](register/use.md)
    * [Instruction Set](register/instructions.md)
+   * [Passes](register/passes.md)
 * [Implementation](implementation/into.md)
    * [Arm instructions](implementation/instructions.md)
    * [Assembly](implementation/passes.md)
    * [Executable](implementation/elf.md)
+* [Appendix](appendix/sof.md)
+   * [Object file](appendix/sof.md)
 

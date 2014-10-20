@@ -15,7 +15,7 @@ The idea of Methods is that they are callable and execute code. In th eobject Ma
 We can see from the diagram that the Call instruction holds a reference to a method, obviously the method that is excuted when the instruction is executed. But to implement control structures we also need a jump or Branch instruction.
 Branches have been banned from programming languages, where they often called goto, for a good reason, namely they are so low level as to be difficult to understand. Instead languages use higher level control structures. But to implement these control structures, we do need a Branch, and so we also need a place for a branch to branch too. In assembler these places are called labels.
 
-If one looks at instruciton sequences from a control flow perspective they fall into little linear chunks, interspersed by calls and branches. We call such a linear sequance of instrucitons Block, and with that we can see that only Blocks are legal point to branch to.
+If one looks at instruction sequences from a control flow perspective they fall into little linear chunks, interspersed by calls and branches. We call such a linear sequance of instructions Block, and with that we can see that only Blocks are legal point to branch to.
 
 So a Branch instruction holds a reference of the Block it jumps to. A Block in turn is a linear sequnce of Instructions and if it contains a Call or Branch instruction it does so as it's last instruction. Methods hold a sequance of Blocks, and if a Block does not call or branch, control flows implicitly to the next Block. 
  

@@ -14,7 +14,7 @@ Without any categorization attemps lets call Smalltalk-80 a first generation obj
 
 ###  Jvm, Squeak
 
-Java is quite rare in object oriented languages inthat it has a complete and rigorous intruction set. Alas this instruciton set is biased, though not completely, towards java. This is shown by the fact that several other object oriented languages are implemented on top of jvm.
+Java is quite rare in object oriented languages inthat it has a complete and rigorous intruction set. Alas this instruction set is biased, though not completely, towards java. This is shown by the fact that several other object oriented languages are implemented on top of jvm.
 
 The jvm is also c based, but used just in time compilation to compile often used methods to machine code, so as to avoid subsequent interpretation. Squeak, an open source smalltalk implementation, follows a simmilar aproach, though it is much more lightweight.
 

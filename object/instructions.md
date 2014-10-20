@@ -19,7 +19,7 @@ The possibly most used instruction is Set, which moves data from one object to a
 
 The Set Intruction needs the two addresses of the data, and to model that we use an interger index into the object. So the machine views every object as an array-like structures, with the fixed overhead of type and layout described earlier. While the index is 0 based, that includes the Layout and as such any payload data starts at index 1.
 
-While it would have been nice to design the access by name, this requires non-existing hardware support, like content addressable memory, to be efficient. On current hardware it would fix the implementation of the inevitable name to index lookup, which we wanted to avoid. There is an instruciton for that lookup called InstanceGet, see below.
+While it would have been nice to design the access by name, this requires non-existing hardware support, like content addressable memory, to be efficient. On current hardware it would fix the implementation of the inevitable name to index lookup, which we wanted to avoid. There is an instruction for that lookup called InstanceGet, see below.
 
 The Slot unifies the object/index pair into a sort of address and the Set takes to and from addresses, and moves data between them. For two object a and b with instance variables foo and bar, meta code for the Set instruction would be
 
@@ -35,7 +35,7 @@ As we have seen the Set is the way to move data between objects. The address of 
 
 The result of InstanceGet is a Slot though, which can then be used in a Set instruction.
 
-InstanceGet is one of the few instrucitons that has a default implementation at the object machine level, resulting in a Set.
+InstanceGet is one of the few instructions that has a default implementation at the object machine level, resulting in a Set.
 
 ### MethodEnter
 
@@ -73,7 +73,7 @@ Messages, like Frames, are kept as a linked list by the object space. This linke
 
 #### Branch
 
-Branch is a an abstract base class and as such instances have no meaning. All branch instruciton nevertheless must derive from this class and have meaningful names that describe what it is they branch on.
+Branch is a an abstract base class and as such instances have no meaning. All branch instruction nevertheless must derive from this class and have meaningful names that describe what it is they branch on.
 
 The base class carries the branch target, ie the block that the branch will jump to if positive. If the branch is not taken, control flows implicitly to the next Block. 
 

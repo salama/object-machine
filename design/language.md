@@ -48,7 +48,7 @@ As defining the objects as pure data structures is somewhat against the working 
 
 Even when defining the machine in a language, when externalised, it is pure data. There is no functionality in it.
 
-So we need to define a Set of Instructions and their meaning to define what the machine will actually do. The instruciton set is what would be assembler for a cpu. But since we are not building a physical machine there is no need to define a concise binary encoding either. We will see in the implementation Section how to transform object machine instruction to cpu executable instrcutions.
+So we need to define a Set of Instructions and their meaning to define what the machine will actually do. The instruction set is what would be assembler for a cpu. But since we are not building a physical machine there is no need to define a concise binary encoding either. We will see in the implementation Section how to transform object machine instruction to cpu executable instrcutions.
 
 Off course Instructions, like classes, are objects. For the machine to have defined behaviou, we need to define what the instructions do in terms of the other object of the machine.
 

@@ -26,5 +26,5 @@ And the last part is about a concrete implementation on a version of the most co
 
 ### Status
 
-The project that is the basis for this book is open source and online. It is also in progress. New insights and a better understanding of a more complete implementation lead to better design which in turn means this book still changes too. Feedback for both book and projet are welcome though.
+The project that is the basis for this book is open source and [online](https://github.com/salama/salama). It is also in progress. New insights and a better understanding of a more complete implementation lead to better design which in turn means this book still changes too. Feedback for both book and projet are welcome though.
 

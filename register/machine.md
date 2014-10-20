@@ -9,7 +9,7 @@ The name Register doesn not only refer to the fact that the machine uses registe
 | Mem | NOT ALLOED | LOAD |
 | Reg | STORE | TRANSFER |
 
-Besides this, the register machine is defined by the instruciton set, which we will define in the second subchapters.
+Besides this, the register machine is defined by the instruction set, which we will define in the second subchapters.
 
 But this is not an abstract machine defined for general purose. We want to map the object machine to it, so the first thing we will need to detail is how the registers are used. This is the first subchapter.
 
