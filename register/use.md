@@ -1,18 +1,13 @@
 ## Register use
 
-Map objects to register, but which
+This chapter defines how we will used the registers of the Register Machine to implement the Object Machine.
+We assume 8 general purpose registers here which we name r1-r8 and a **p**rogram **c**ounter we call pc.
 
-define for single indexed access
+We will see that the mapping we define does rely on the machines ability of indexed memory access. We shall define that in detail in the following instruction set chapter, but briefly it allows us to store a base memory address, the pointer to or reference of an object, and access memory at an indexed offset to that register with a single instruction.
 
-| Message| Self| Frame| NewMessage |
-| -- | -- | -- | -- |
-| 0:2 | 1:2 | 2:2 | 3:2 |
-| 0:3 | 1:3 | 2:3 | 3:3 |
-| 0:4 | 1:4 | 2:4 | 3:4 |
-| 0:5 | 1:5 | 2:5 | 3:5 |
-| 0:6 | 1:6 | 2:6 | 3:6 |
-| 0:7 | 1:7 | 2:7 | 3:7 |
-| 0:8 | 1:8 | 2:8 | 3:8 |
-| 0:9 | 1:9 | 2:9 | 3:9 |
+|  | Message| Self| Frame| NewMessage | Scratch |
+| ---| --- | --- | --- | --- | --- |
+| **Register:** | r0 | r1 | r2 | r3 | r4 - r7|
 
-only object access
+The diagram shows where the object references to the object machines 4 objects are located. Registers up from 4 are used by the machine as temporary storage to implment instructions and never stored. To keep the object machines logic they must never be used across a branch or call.
+
