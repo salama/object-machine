@@ -6,7 +6,7 @@ The binary format is pure data, unlike the objects we have been using there is n
 
 ### Calling and branching
 
-To call a function we need the address of the function, whihc we can not per se know. But we do know the position of the instruction *relative* to the function address. This relation is not changed by the loading and so we can use that to calculate the function address. This method is called pc (program counter) relative addressing and is the preferred method on cpu's that support it directly. Even on cpus that don't it can be implemented with a little maths.
+To call a function we need the address of the function, which we can not per se know. But we do know the position of the instruction *relative* to the function address. This relation is not changed by the loading and so we can use that to calculate the function address. This method is called pc (program counter) relative addressing and is the preferred method on cpu's that support it directly. Even on cpus that don't it can be implemented with a little maths.
 
 Branches work basically the same, and this is the reason we have Blocks, as Blocks represent branch targets.
 
