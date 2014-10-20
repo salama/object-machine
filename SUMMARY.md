@@ -13,7 +13,7 @@
    * [Instruction Set](object/instructions.md)
    * [Layers and Passes](object/layers_and_passes.md)
 * [Register Machine](register/machine.md)
-   * [Register use](register/naming.md)
+   * [Register use](register/use.md)
    * [Instruction Set](register/instructions.md)
 * [Implementation](implementation/into.md)
    * [Arm instructions](implementation/instructions.md)
