@@ -17,6 +17,20 @@ The instructions used are listed below and do off course not even make up the la
 
 Arm uses conditional codes on *every* instruction and while this is very useful for very small branches, it is one of the obvious optimisations that is not implemented.
 
+## Passes
+
 But as mentioned the Passes architecture makes it trivial to add optimisations later, even by third parties.
 
 Even new Instruction classes may be defined and used, by defining new Passes at the register level.
+
+As the mapping of Register Machine to Arm is quite trivial, we will not go into the details of the passes. With the same naming convention as was used for the register passes we just give a quick list:
+
+- CallImplementation implements FunctionCall
+- ConstantImplementation implements LoadConstant
+- GetImplementation implements GetSlot
+- MainImplementation implements RegisterMain
+- ReturnImplementation implements FunctionReturn
+- SaveImplementation implements SaveReturn
+- SetImplementation implements SetSlot
+- TransferImplementation implements RegisterTransfer
+
