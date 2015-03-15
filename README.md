@@ -2,9 +2,9 @@
 
 **Design and Implementation**
 
-In this book we set out to define the concept of an object machine, which is related to, but not the same as, a virtual machine.
+In this book we set out to define the concept of an object machine. An Object machine is  a virtual machine, defined as much as possible in object terms.
 
-First we define the design goals, and the design, and go on to detail an existing example implementation for the most common cpu.
+First we define the design goals, and the design, and go on to detail an existing example implementation for the most common cpu, again only in object oriented terms.
 
 ### Intended audience
 
