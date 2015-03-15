@@ -6,7 +6,7 @@ A basic understanding nevertheless helps to understand the design of the machine
 
 #### Compiler bootstrap
 
-Since a compiler is familiar to every programmar, let's start by looking at a how that bootstraps itself. A jiting virtual machine build on that, but makes the distinction of compile and runtime more complicated.
+Since a compiler is familiar to every programmar, let's start by looking at a how that bootstraps itself. A jiting virtual machine builds on that, but makes the distinction of compile and runtime more complicated.
 
 If CS is the compilers source code and CC a preexisting compiler for the language, then we call the executable that CC creates by compiling CS, CX:
 
@@ -36,6 +36,6 @@ So if RS is the ruby source for our machine, we use rbx to create a machine RM
 RS --> rbx --> RM
 ```
 
-RM in turn can be used to create a machine RN which is functionaly equivalent and so on. While RM is not the machine OM that we design, it is a superset. We could say the RS is made up of the ruby dependent part RDS and a language independant part OS. We note that while we use rbx, OS is expressed in ruby, but that does not make it language dependant.
+RM in turn can be used to create a machine RN which is functionaly equivalent and so on. RM is not the machine OM that we design, it is a superset. We could say the RS is made up of the ruby dependent part RDS and a language independant part OS. We note that while we use rbx, OS is expressed in ruby, but that does not make it language dependant.
 
 We will see the language independant format in chapter 4 and how that changes the very simplified process above.

@@ -10,7 +10,7 @@ Our goal is to be language independant, this is why we design a machine and not 
 
 #### Objects and classes
 
-The machine must off course support the idea of objects, and as outlined above, we choose full data hiding. This means only the object has access to its internal state (data).
+The machine must off course support the idea of objects, and as outlined above, we choose full data hiding. This means only the objects methods have access to its internal data.
 
 Also each object has a class that may not change during it's lifecycle. A class may derive from other classes and derivation may change. As in ruby we call classes that can not be instantiated modules. Eigenclasses are not only supported but integral to the machine.
 
@@ -40,20 +40,18 @@ Our main requirement is that the machine too be what is called object oriented i
 
 Instead of calling it object oriented, the machine is really object based, ie based on objects, not oriented towards them. And even based seems a little verbose as it is really made up of just objects, so we call it object machine.
 
-So we aim to define a set of objects, including a set of instructions, that can implement an object oriented language as defined above.
+Our aim is to define a set of objects, including a set of instructions, that can implement an object oriented language as defined above.
 
-As defining the objects as pure data structures is somewhat against the working of the human brain, we will define them in an object oriented language and then define a method to externalise them in a language indepenedant manner. The language of choice is ruby, but it should be noted that parsing ruby is not part of the object machine functionality.
+Defining the objects as pure data structures is somewhat hard to understand, we will define them in an object oriented language and then define a method to externalise them in a language indepenedant manner. The language of choice is ruby, but it should be noted that parsing ruby is not part of the object machine functionality.
 
 #### Instruction Set
 
-Even when defining the machine in a language, when externalised, it is pure data. There is no functionality in it.
+The set of Instructions and their meaning defines what the machine will actually do. The instruction set is what would be assembler for a cpu. But since we are not building a physical machine there is no need to define a concise binary encoding either. We will see in the implementation section how to transform object machine instructions to cpu executable instructions.
 
-So we need to define a Set of Instructions and their meaning to define what the machine will actually do. The instruction set is what would be assembler for a cpu. But since we are not building a physical machine there is no need to define a concise binary encoding either. We will see in the implementation Section how to transform object machine instruction to cpu executable instrcutions.
-
-Off course Instructions, like classes, are objects. For the machine to have defined behaviou, we need to define what the instructions do in terms of the other object of the machine.
+Off course Instructions, like other classes, are objects. For the machine to have defined behaviour, we need to define what the instructions do in terms of the other objects of the machine.
 
 #### Explicit values
 
 We make explict distinction between objects and values, which has often tried to be blurred.
 
-All data is ultimately stored in values. Values are immutable and have no class. Values have type, and we design an extensible type system. We define the minimal set of integer and reference types, but note that especially float types demand external run time type informations (rtti).
+All data is ultimately stored in values. Values are immutable and have no class. Values have type, and we design an extensible type system. We define the minimal set of integer,reference and boolean types, and note that especially float types demand external run time type informations (rtti).
