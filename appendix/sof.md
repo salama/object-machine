@@ -4,9 +4,9 @@
 
 For completeness we add a brief description of the object file format used by the object machine. This is what makes the machine language independant.
 
-The formal is not unlike yaml, but much more compact in that it adds it allows several items on one line. Also it is specific to the machine, and as such uses class names unscoped.
+The format is not unlike yaml, but much more compact in that it adds it allows several items on one line. Also it is specific to the object machine, and as such uses class names unscoped.
 
-We will "define" this by example and refer to the implementation for details:
+We will define this by example and refer to the implementation for details:
 
 ### Simple types
 String
@@ -22,6 +22,8 @@ Number
 ```
     123444
 ```
+
+true , false and nil are written without quotes, lower case.
 
 ### Arrays
 
@@ -53,7 +55,7 @@ larger arrays or arrays with complex structures
 
 ### Object
 
-Objects can bee seen as a hash, but must have a class. The notation is a little like a construction without the new. For objects with less than 5 simple arguments:
+Objects can bee seen as a hash, but must have a class. The notation is a little like a constructor without the new. For objects with less than 5 simple arguments:
 ```
     MemoryInstruction(:right => 1, :operand => 0, :pre_post_index => 1, :add_offset => 0, :position => 456)
 ```

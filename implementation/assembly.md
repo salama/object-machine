@@ -1,8 +1,8 @@
 ## Assembly
 
-Assembly language is normally a text format of instruction memnonics with arguments that represent registers or numbers or switches. Assembling is then the parsing and convertion into a binary format. Since we have no external format for the Arm Instruction we call the process of creating binary encoded data from these instructions assembling.
+Assembly language is normally a text format of instruction memnonics with arguments that represent registers or numbers or switches. Assembling is then the parsing and conversion into a binary format. Since we have no external format for the Arm Instructions we call the process of creating binary encoded data from these instructions assembling.
 
-The binary format is pure data, unlike the objects we have been using there is no functionality. When a binary gets loaded into memory, to be executed, it is loaded at an address that is unknown at compile time. This presents a problem in two ways.
+The binary format is pure data, unlike the objects we have been using there is no functionality. When a binary gets loaded into memory, to be executed, it is loaded at an address that is possibly unknown at compile time. This presents a problem in two ways.
 
 ### Calling and branching
 
@@ -21,3 +21,7 @@ Similar to a c program, our implemetation starts off with a small binary and whe
 The better solution is called relocation and basically fixes any address in the binary by adding the base address where the binary is loaded. When the binary is 0 relative this results in correct addresses. Relocation is part of the starndard c linking process, but as we do not (or rather minnimally) participate in the c conventions, we have to do this ourselves.
 
 So instead of calling a main function at start, we call an __init__ that does the fixing. Our complete rtti makes this process not only possibe, but quite easy.
+
+### Known addresses
+
+For some cpu/os combinations the above problems can be circumvented. Some OS's load binaries at known constant addresses. Linux on arm is such a case.

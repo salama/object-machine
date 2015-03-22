@@ -1,4 +1,4 @@
-# Passes
+# Register Passes
 
 As we explained above, Passes are small chunks of code that each perform part of the compilation or transformation from one machine model to another.
 
@@ -10,24 +10,25 @@ The Naming convention we use is YYImplementation where YY is the Object Machine 
 
 ## CallImplementation
 
-Defines the function call, ie
+Defines the method call, ie
 
 - move the new_message to message
-- unroll self and frame (move to their registers)
+- unroll self from the message (move to right registers)
+- nil the frame
 - issue a register FunctionCall
 
 ## ReturnImplementation
 
-Return from a function call by
+Return from a method call by
 
 - move message back to new_message
-- restore the message
+- restore the calling message
 - restore self and frame from the message
 - issue a FunctionReturn
 
 ## SetImplementation
 
-Set moves data from one object to another in one instruction, but at the register leevl it is three steps:
+Set moves data from one object to another in one oo instruction, but at the register level it is three steps:
 
 - move data to temporary register with GetSlot
 - move data to destination with SetSlot

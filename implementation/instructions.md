@@ -1,10 +1,10 @@
 ## Arm instructions
 
-The arm architecture, or versions of the arm architecture, are the most common cpu today. This is in part due to the low power consumption, which may in turn be attributed to the simple design and low transistor count. A typical arm processor has 60 thousand transistors, while a modern intel has over 3 billion.
+The arm architecture, or versions of the arm architecture, are the most common cpu today. This is in part due to the low power consumption, which may in turn be attributed to the simple design and low transistor count. A basic arm6 processor has 30 thousand transistors, while a modern intel has over 3 billion (not million).
 
-This is also reflected in the instruction set, which is quite small and also quite well structured. Arm, being a risc architecture, has fixed length instruction, with a very rigid encoding scheme.
+This is also reflected in the instruction set, which is quite small and also quite well structured. Arm, being a risc architecture, has fixed length instructions, with a rigid encoding scheme.
 
-Consequently six classes, implement most of the arm assembly, which is so well documented elswhere, we will not go into detail here.
+Consequently six classes, implement most of the arm assembly (used outside os's), which is so well documented elsewhere, we will not go into detail here.
 
 The instructions used are listed below and do off course not even make up the larger part of the whole instruction set. But enough to implement the object machine.
 

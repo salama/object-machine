@@ -1,8 +1,8 @@
 ## Executable
 
-During assembly, binary versions of the instructions are created. Blocks contain a list of Instructions and thus get converted to a stream of binary. Methods in turn have a list of blocks and so the whole Method become a binary stream.
+During assembly, binary versions of the instructions are created. Blocks contain a list of Instructions and thus get converted to a stream of binary. Methods in turn have a list of blocks and so the whole Method becomes a binary stream.
 
-Strings are other simple objects that similarly transfor easily to their binary representation, asuming a utf8 encoding.
+Strings are other simple objects that similarly transform easily to their binary representation, asuming a utf8 encoding.
 
 Other objects contain a mix of integer and reference values that are binary encoded as well. The memory layout described above demands type encoding for all values and a layout reference for evey object.
 
