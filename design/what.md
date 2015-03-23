@@ -17,7 +17,7 @@ Simplicity is rather the lack of complication.
 
 #### Minimal
 
-This is almost implied in simplicity, because when a design is minimal it usually is simple. Still, it is a separate goal, that can be expressed succinctly by the microkernel idea:
+This is almost implied in simplicity, because when a design is minimal it usually is simple. Still, it is a separate goal, that can be expressed succinctly by the micro-kernel idea:
 
 If you can leave it out, do.
 
