@@ -2,9 +2,9 @@
 
 ## Object file format
 
-For completeness we add a brief description of the object file format used by the object machine. This is what makes the machine language independant.
+For completeness we add a brief description of the object file format used by the object machine. This is what makes the machine language independent.
 
-The format is not unlike yaml, but much more compact in that it adds it allows several items on one line. Also it is specific to the object machine, and as such uses class names unscoped.
+The format is not unlike yaml, but much more compact in that it adds it allows several items on one line. Also it is specific to the object machine, and as such uses class names un-scoped.
 
 We will define this by example and refer to the implementation for details:
 
@@ -71,7 +71,7 @@ Virtual::Block(:position => 440, :length => -1, :name => :return)
 
 ### References
 
-An object file is a complete unit, but a tree representation of a graph. References avoid duplication and endless recursion. The syntax for dereferencing is simply:
+An object file is a complete unit, but a tree representation of a graph. References avoid duplication and endless recursion. The syntax for de-referencing is simply:
 
 ```
     *25
