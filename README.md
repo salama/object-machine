@@ -4,11 +4,11 @@
 
 In this book we set out to define the concepts of an object machine. An Object machine is  a virtual machine, defined as much as possible in object terms.
 
-First we define the design goals, and the design, and go on to detail an existing example implementation for the most common cpu, again only in object oriented terms.
+First we define the design goals, and the design, and go on to detail an existing example implementation for the most common cpu, again in object oriented terms.
 
 ### Intended audience
 
-This is not a scientific book, rather written by an enthusiast. As such it hopes to apeal to other interested people, so if you like
+This is not a scientific book, rather written by an enthusiast. As such it hopes to appeal to other interested people, so if you like
 
 - compilers
 - how to build languages
@@ -26,5 +26,5 @@ And the last part is about a concrete implementation on a version of the most co
 
 ### Status
 
-The project that is the basis for this book is open source and [online](https://github.com/salama/salama). It is also in progress. New insights and a better understanding of a more complete implementation lead to better design which in turn means this book still changes too. Feedback for both book and projet are welcome though.
+The project that is the basis for this book is open source and [online](https://github.com/salama/salama). It is also in progress. New insights and a better understanding of a more complete implementation lead to better design which in turn means this book still changes too. Feedback for both book and project are welcome though.
 
