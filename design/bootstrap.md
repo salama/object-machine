@@ -36,6 +36,6 @@ So if RS is the ruby source for our machine, we use rbx to create a machine RM
 RS --> rbx --> RM
 ```
 
-RM in turn can be used to create a machine RN which is functionally equivalent and so on. RM is not the machine OM that we design, it is a super-set. We could say the RS is made up of the ruby dependent part RDS and a language independent part OS. We note that while we use rbx, OS is expressed in ruby, but that does not make it language dependant.
+RM in turn can be used to create a machine RN which is functionally equivalent and so on. RM is not the machine OM that we design, it is a super-set. We could say the RS is made up of the ruby dependent part RDS and a language independent part OS. We note that while we use rbx, OS is expressed in ruby, but that does not make it language dependent.
 
 We will see the language independent format in chapter 4 and how that changes the very simplified process above.
