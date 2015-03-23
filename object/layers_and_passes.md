@@ -18,21 +18,21 @@ As our goal is to implement the object machine for a specific cpu, we would not 
 
 The first reason and most compelling is that this allows us to implement different cpus with relative ease. Most cpus are quite similar and it is always possible to have a straightforward sub-optimal first implementation that has optimization passes on the resulting code.
 
-The other reason for defining the layer is that when implementing the cpu specific layer, some kind of machine abstraction happens automatically as the step between the object and arm machines is just quite big. So by formalising the layer we gain above mentioned advantage.
+The other reason for defining the layer is that when implementing the cpu specific layer, some kind of machine abstraction happens automatically as the step between the object and arm machines is just quite big. So by formalizing the layer we gain above mentioned advantage.
 
 #### Arm machine
 
-The Arm architecture is a simple RISC machine. It is a register based architecture with 16 registers, and a well defined and easy to implement instruction set. The register machine defines almost all aspects of the machine apart from small details like the memnonic names or their encoding.
+The Arm architecture is a simple RISC machine. It is a register based architecture with 16 registers, and a well defined and easy to implement instruction set. The register machine defines almost all aspects of the machine apart from small details like the mnemonic names or their encoding.
 
 ### Passes
 
 Since we have now defined the layers we shall use, the process of generating an executable becomes tumbling down those layers. We need to define the Object Machine in terms of the Register Machine, and then the Register in terms of the Arm machine. But this is true for the instructions only, other objects of the object machine stay valid.
 
-This and other reasons have prompted us to use an iterative aproach to the conversion process. We call these iterations Passes. A Pass runs, or passes, over the instruction stream of a Method and changes it as it sees fit.
+This and other reasons have prompted us to use an iterative approach to the conversion process. We call these iterations Passes. A Pass runs, or passes, over the instruction stream of a Method and changes it as it sees fit.
 
 The result of all Passes of a layer results in the desired transformation from one machine instruction set to another. In other words the sum of one machines Passes represent a compilation to that machine.
 
-A simple example of a pass would be how the register machine implements the object machine Set instruction. While adherring to some register layout, the Set is replaced by two instructions, one load and one store. Another more trivial example is how the arm machine later transforms a load into ldr (the arm **l**oa**d** **r**egister instruction)
+A simple example of a pass would be how the register machine implements the object machine Set instruction. While adhering to some register layout, the Set is replaced by two instructions, one load and one store. Another more trivial example is how the arm machine later transforms a load into ldr (the arm **l**oa**d** **r**egister instruction)
 
 There are several advantages to using Passes, which are mainly related to the fact that the data structure we work on is "intact", though it may be partial. At any point in the process one can for example take a snapshot of the state in a human readable format (sof). Other advantages are :
 
