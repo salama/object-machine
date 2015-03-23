@@ -2,9 +2,9 @@
 
 This chapter defines our actual design goal and also principles we want to adhere to while designing.
 
-Our primary goal is to design a language independent native object machine capable of running object oriented languages.
+Our primary goal is to design a language-independent native object machine capable of running object oriented languages.
 
-To do this we will have to define what makes a machine and what characterises an object oriented language. We will see how similar things were done previously, and how to "build" the initial version of such a mchine on current hardware.
+To do this we will have to define what makes a machine and what characterises an object oriented language. We will see how similar things have been done previously, and how to "build" the initial version of such a machine on current hardware.
 
 ### Design principles
 
@@ -17,12 +17,12 @@ Simplicity is rather the lack of complication.
 
 #### Minimal
 
-This is almost implied in simplicity, because when a design is minimal it usually is simple. Still, it is a seperate goal, that can be expressed succinctly by the mikrokernel idea:
+This is almost implied in simplicity, because when a design is minimal it usually is simple. Still, it is a separate goal, that can be expressed succinctly by the microkernel idea:
 
 If you can leave it out, do.
 
 #### Extensible
 
-Since we want to design a minimal system, it needs to be extensible easily. And as it is an open system, easily means a mechnism by which anyone can define more functionality for the machine. Off course with open classes wóne can always patch, but this is not what we mean. rather a defined interface for at least the central parts of type system and instruction set.
+Since we want to design a minimal system, it needs to be extensible easily. And as it is an open system, easily means a mechanism by which anyone can define more functionality for the machine. Off course with open classes one can always patch, but this is not what we mean. rather a defined interface for at least the central parts of type system and instruction set.
 
 This also encourages external developers to improve the machine for different hardware or use cases. While obvious examples include cpu/os combinations, also gpu or mmu support should be possible.
