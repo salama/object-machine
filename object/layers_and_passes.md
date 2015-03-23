@@ -1,12 +1,12 @@
 ## Layers and Passes
 
-We have now defined the main parts of the machine as an independant machine, which can be viewed as an abstract or virtual machine. To implement this machine in software there are many more pieces needed which we shall define as seperate layers.
+We have now defined the main parts of the machine as an independent machine, which can be viewed as an abstract or virtual machine. To implement this machine in software there are many more pieces needed which we shall define as separate layers.
 
-Layers let us seperate the different parts and help in the process of naming, that software engineering is.
+Layers let us separate the different parts and help in the process of naming, that software engineering is.
 
 ### Layers
 
-Specifically the three main Layers we define are given in the diagram below. The top layer is the object machine that we defined, below it the register machine and below that the arm imlementation. Now normally layers are designed to seperate, and especially with this design we would excpect the arm layer to be independent of the object machine layer and vice versa. And while this is true for the most part, we will also see a way in which is is not in the next section.
+Specifically the three main Layers we define are given in the diagram below. The top layer is the object machine that we defined, below it the register machine and below that the arm implementation. Now normally layers are designed to separate, and especially with this design we would expect the arm layer to be independent of the object machine layer and vice versa. And while this is true for the most part, we will also see a way in which is is not in the next section.
 
 ![Main Layers](http://yuml.me/59576e82)
 
@@ -16,7 +16,7 @@ The Register Machine is an abstract model of current hardware. It has registers,
 
 As our goal is to implement the object machine for a specific cpu, we would not really need extra layers. We still define the register machine layer for two main reasons.
 
-The first reason and most compelling is that this allows us to implement different cpus with relative ease. Most cpus are quite similar and it is always possible to have a straightforward sub-optimal first implementation that has optimisation passes on the resulting code.
+The first reason and most compelling is that this allows us to implement different cpus with relative ease. Most cpus are quite similar and it is always possible to have a straightforward sub-optimal first implementation that has optimization passes on the resulting code.
 
 The other reason for defining the layer is that when implementing the cpu specific layer, some kind of machine abstraction happens automatically as the step between the object and arm machines is just quite big. So by formalising the layer we gain above mentioned advantage.
 
