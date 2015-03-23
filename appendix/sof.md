@@ -2,9 +2,11 @@
 
 ## Object file format
 
-For completeness we add a brief description of the object file format used by the object machine. This is what makes the machine language independent.
+For completeness we add a brief description of the object file format used by the object machine. 
+This is what makes the machine language independent.
 
-The format is not unlike yaml, but much more compact in that it adds it allows several items on one line. Also it is specific to the object machine, and as such uses class names un-scoped.
+The format is not unlike yaml, but much more compact in that it adds it allows several items on one line. 
+Also it is specific to the object machine, and as such uses class names un-scoped.
 
 We will define this by example and refer to the implementation for details:
 
@@ -55,7 +57,9 @@ larger arrays or arrays with complex structures
 
 ### Object
 
-Objects can bee seen as a hash, but must have a class. The notation is a little like a constructor without the new. For objects with less than 5 simple arguments:
+Objects can bee seen as a hash, but must have a class.
+The notation is a little like a constructor without the new.
+For objects with less than 5 simple arguments:
 ```
     MemoryInstruction(:right => 1, :operand => 0, :pre_post_index => 1, :add_offset => 0, :position => 456)
 ```
@@ -71,7 +75,8 @@ Virtual::Block(:position => 440, :length => -1, :name => :return)
 
 ### References
 
-An object file is a complete unit, but a tree representation of a graph. References avoid duplication and endless recursion. The syntax for de-referencing is simply:
+An object file is a complete unit, but a tree representation of a graph. 
+References avoid duplication and endless recursion. The syntax for de-referencing is simply:
 
 ```
     *25
