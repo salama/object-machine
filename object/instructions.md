@@ -1,11 +1,11 @@
 ## Instruction Set
 
-The previous chapter, specifially the diadram, showed how the Method holds Blocks which in turn holds Instructions. Some of the Instruction classes were brushed on to explain the class structure. This chapter provides detailed explanation of all Instructions defined by the machine.
+The previous chapter, specifically the diagram, showed how the Method holds Blocks which in turn holds Instructions. Some of the Instruction classes were brushed on to explain the class structure. This chapter provides detailed explanation of all Instructions defined by the machine.
 
-In the next chapter we will start to define the mechanism of how the oo instructions are translated to executable code. This will be done in an extensible manner, and since the Instructions are defined as Subclasses of a Baseclass, additional Instructions may be defined by external code. In this way the machiene Instruction set is extensible, and may be executed by the machine implementation as long as mappings to lower levels are provided.
+In the next chapter we will start to define the mechanism of how the oo instructions are translated to executable code. This will be done in an extensible manner, and since the Instructions are defined as Sub-classes of a Base-class, additional Instructions may be defined by external code. In this way the machine Instruction set is extensible, and may be executed by the machine implementation as long as mappings to lower levels are provided.
 
 This extensible instruction set is quite different from physical machines, but also from other defined virtual machines.
-Another marked difference is the fact that Instructions, as objects, may hold references to other machine objects. This is mostly a consequence of the the fact that we didn't start with a textual definition of the instruction representation. Also assembler instructions often may have references to other data, but this is often in a quite cryptic way, due to the way they have been designed as text representation. As mentioned we do have a text representation, which is human readable, but that is not it's main purpose. It's main purpose it to allow languages to exchange data in a text format that provides diffs, easy parsing and some readbility.
+Another marked difference is the fact that Instructions, as objects, may hold references to other machine objects. This is mostly a consequence of the the fact that we didn't start with a textual definition of the instruction representation. Also assembler instructions often may have references to other data, but this is often in a quite cryptic way, due to the way they have been designed as text representation. As mentioned we do have a text representation, which is human readable, but that is not it's main purpose. It's main purpose it to allow languages to exchange data in a text format that provides diffs, easy parsing and some readability.
 
 ![Instruction Diagram](http://yuml.me/fc82f1db)
 
@@ -14,9 +14,9 @@ Another marked difference is the fact that Instructions, as objects, may hold re
 
 The possibly most used instruction is Set, which moves data from one object to another. Since we have an object machine, there is no other place for data to be but inside objects. This is a bit like the opposite of a register machine model, which never moves data straight from memory to memory.
 
-The Set Intruction needs the two addresses of the data, and to model that we use an interger index into the object. So the machine views the object as an array-like structure, with the fixed overhead of type and layout described earlier. While the index is 0 based, that includes the Layout and as such any payload data starts at index 1.
+The Set Instruction needs the two addresses of the data, and to model that we use an integer index into the object. So the machine views the object as an array-like structure, with the fixed overhead of type and layout described earlier. While the index is 0 based, that includes the Layout and as such any payload data starts at index 1.
 
-While it would have been nice to design the access by name, this requires non-existing hardware support, like content addressable memory, to be efficient. On current hardware it would fix the implementation of the inevitable name to index lookup, which we wanted to avoid. There is an instruction for that lookup called InstanceGet, see below.
+While it would have been nice to design the access by name, this requires non-existing hardware support, like content addressable memory, to be efficient. On current hardware it would fix the implementation of the inevitable name to index look-up, which we wanted to avoid. There is an instruction for that look-up called InstanceGet, see below.
 
 The Slot unifies the object/index pair into a sort of address and the Set takes to and from addresses, and moves data between them. For two objects a and b with instance variables foo and bar, meta code for the Set instruction would be
 
@@ -36,9 +36,9 @@ InstanceGet is one of the few instructions whose implementation at the object ma
 
 ### MethodEnter
 
-Method enter is the first instruction of any function and basically gives the machine the oppertunity to do whatever needs to be done before any actual work may commence. In a register based implementations this would include saving the return address and possibly other register shuffling.
+Method enter is the first instruction of any function and basically gives the machine the opportunity to do whatever needs to be done before any actual work may commence. In a register based implementations this would include saving the return address and possibly other register shuffling.
 
-Another resposibility of this instruction is to determine whether a Frame will be needed. A seperate instruction exists to create a Frame,as we will see below. MethodEnter retains a reference to the Method that is entered to make the decision about the Frame.
+Another responsibility of this instruction is to determine whether a Frame will be needed. A separate instruction exists to create a Frame,as we will see below. MethodEnter retains a reference to the Method that is entered to make the decision about the Frame.
 
 ### NewFrame
 
@@ -63,9 +63,9 @@ This implementation is off course quite complicated and as such implemented in c
 
 ### NewMessage
 
-The NewMessage instruction makes a new Message available for a Method. For preperation of the next message send, the new message is one of the four objects that can be accessed. Making a call will then swap the new message as the current message.
+The NewMessage instruction makes a new Message available for a Method. For preparation of the next message send, the new message is one of the four objects that can be accessed. Making a call will then swap the new message as the current message.
 
-Messages, like Frames, are kept as a linked list by the object space. This linked list of messages has the function of the stackin a register machine. But since Messages are objects, they are easier understood and handled.
+Messages, like Frames, are kept as a linked list by the object space. This linked list of messages has the function of the stack in a register machine. But since Messages are objects, they are easier understood and handled.
 
 ### Branches
 
@@ -79,7 +79,7 @@ Notice that a branch must be the last instruction in a Block, and also that the 
 
 ### UnconditionalBranch
 
-An UnconditionalBranch always branches. So control never flows implicitly beyond it. The next Block must then be reached by another Branch.
+An UnconditionalBranch always branches, control never flows implicitly beyond it. The next Block must be reached by another Branch.
 
 UnconditionalBranches are for example needed in while loops that evaluate end criteria at the beginning, not the end, of the loop.
 
