@@ -9,11 +9,11 @@ Let's look at both of those reasons and see how they relate to our object machin
 
 #### Interpretation
 
-There are several reaons to choose interpretation over compilation, and which is the most important of those will depend on the person or organisation making the choice.
+There are several reasons to choose interpretation over compilation, and which is the most important of those will depend on the person or organization making the choice.
 
-Readily available compilation tools for another language but the one implemented is probably the primary factor for most implementors. Platform independence is highly rated and perceived as a very difficult task. If not difficult at least an unneccesary extra. Especially c has with gcc, and nowadays llvm, a solid multiplatform implementation. Also c is well know to many so getting started may be quick. LLvm even has a vm toolkit, and even without that, implements an embeddable jit, an implementors dream come true.
+Readily available compilation tools for another language but the one implemented is probably the primary factor for most implementors. Platform independence is highly rated and perceived as a very difficult task. If not difficult at least an unnecessary extra. Especially c has with gcc, and nowadays llvm, a solid multi-platform implementation. Also c is well know to many so getting started may be quick. LLvm even has a vm toolkit, and even without that, implements an embeddable jit, an implementors dream come true.
 
-For the object machine we care mostly about the arm cpu, and the fact that it should be possible to create a port with realtive ease. That is if a person knows the language (ruby) and the cpu (say intel) it should be possible to port the machine in less than a quarter of the time it took to create it. C has not started out the standardised, readily available platform that it is now, so why should an object oriented platform be different.
+For the object machine we care mostly about the arm cpu, and the fact that it should be possible to create a port with relative ease. That is if a person knows the language (ruby) and the cpu (say intel) it should be possible to port the machine in less than a quarter of the time it took to create it. C has not started out the standardised, readily available platform that it is now, so why should an object oriented platform be different.
 
 Especially when choosing another language to implement the target language interpretation is the straightforward choice. Implementing an object oriented language is difficult enough, without trying to manipulate the implementation at runtime. Also the tool mismatch of implementation and target language is hard to overcome.
 
