@@ -9,5 +9,5 @@ We will see that the mapping we define does rely on the machines ability of inde
 | ---| --- | --- | --- | --- | --- |
 | **Register:** | r0 | r1 | r2 | r3 | r4 - r7|
 
-The diagram shows where the object references to the object machines 4 objects are located. Registers up from 4 are used by the machine as temporary storage to implment instructions and never stored. To keep the object machines logic they must never be used across a branch or call.
+The diagram shows where the object references to the object machines 4 objects are located. Registers up from 4 are used by the machine as temporary storage to implement instructions and never stored. To keep the object machines logic they must never be used across a branch or call.
 
