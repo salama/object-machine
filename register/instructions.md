@@ -32,7 +32,7 @@ Transfers control to the given Method. At register level this does not do any se
 
 ### RegisterMain
 
-This instruction sets up the machine and starts execution at the method given. This is seperate from the FunctionCall to allow for different implementations of both the set and the initial control transfer.
+This instruction sets up the machine and starts execution at the method given. This is separate from the FunctionCall to allow for different implementations of both the set and the initial control transfer.
 
 A Main may have to do address translation for the objects loaded if the exe is loaded to a different address. 
 
