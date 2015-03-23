@@ -19,7 +19,7 @@ Arm uses conditional codes on *every* instruction and while this is very useful 
 
 ## Passes
 
-But as mentioned the Passes architecture makes it trivial to add optimisations later, even by third parties.
+But as mentioned the Passes architecture makes it trivial to add optimizations later, even by third parties.
 
 Even new Instruction classes may be defined and used, by defining new Passes at the register level.
 
