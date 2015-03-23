@@ -48,10 +48,10 @@ Defining the objects as pure data structures is somewhat hard to understand, we 
 
 The set of Instructions and their meaning defines what the machine will actually do. The instruction set is what would be assembler for a cpu. But since we are not building a physical machine there is no need to define a concise binary encoding either. We will see in the implementation section how to transform object machine instructions to cpu executable instructions.
 
-Off course Instructions, like other classes, are objects. For the machine to have defined behaviour, we need to define what the instructions do in terms of the other objects of the machine.
+Off course Instructions, like other classes, are objects. For the machine to have defined behavior, we need to define what the instructions do in terms of the other objects of the machine.
 
 #### Explicit values
 
-We make explict distinction between objects and values, which has often tried to be blurred.
+We make explicit distinction between objects and values, which has often tried to be blurred.
 
-All data is ultimately stored in values. Values are immutable and have no class. Values have type, and we design an extensible type system. We define the minimal set of integer,reference and boolean types, and note that especially float types demand external run time type informations (rtti).
+All data is ultimately stored in values. Values are immutable and have no class. Values have type, and we design an extensible type system. We define the minimal set of integer,reference and boolean types, and note that especially float types demand external run-time type information (rtti).
