@@ -58,13 +58,13 @@ larger arrays or arrays with complex structures
 ### Object
 
 Objects can bee seen as a hash, but must have a class.
-The notation is a little like a constructor without the new.
+The written notation is a little like a constructor without the new.
 For objects with less than 5 simple arguments:
 ```
     MemoryInstruction(:right => 1, :operand => 0, :pre_post_index => 1, :add_offset => 0, :position => 456)
 ```
 
-Or object that use have objects as members.
+For objects that use have objects as members, the attributes are written below the object header. The header will always include the class name, and possibly short attributes.
 ```
 Virtual::Block(:position => 440, :length => -1, :name => :return)
  :codes -Arm::MoveInstruction(:operand => 0, :rn => :r0, :position => 440)
@@ -114,9 +114,11 @@ A class may name references to instances by defining
 
 The Sof Writer will still ensure that these references are globally unique and contain no spaces. But this feature makes for much more readable files as the example shows.
 
+The Writer also ensures that the actual object is written at its most shallow occurrence in the tree, and any references to that object occur deeper in the tree.
+
 ### Example
 
-Sof is meant to write object files. Below is a full example of a minimal object space of the Parfait runtime.
+Sof is meant to write object files. Below is an example of a minimal object space of the Parfait run-time. It is meant to illustrate the readability of a non-trivial object graph
 
 ```
 &space Parfait::Space()
