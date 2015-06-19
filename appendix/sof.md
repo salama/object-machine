@@ -67,19 +67,32 @@ For objects with less than 5 simple arguments:
 Or object that use have objects as members.
 ```
 Virtual::Block(:position => 440, :length => -1, :name => :return)
-           :codes -Arm::MoveInstruction(:operand => 0, :rn => :r0, :position => 440)
-              :attributes {:opcode => :mov, :update_status => 0, :condition_code => :al}
-              :to Register::RegisterReference(:symbol => :r0)
-              :from Register::RegisterReference(:symbol => :r3)
+ :codes -Arm::MoveInstruction(:operand => 0, :rn => :r0, :position => 440)
+    :attributes {:opcode => :mov, :update_status => 0, :condition_code => :al}
+    :to Register::RegisterReference(:symbol => :r0)
+    :from Register::RegisterReference(:symbol => :r3)
+```
+
+### Classes derived from Hash or Array
+
+Especially in the object machines runtime, some classes derive from Array. The notation for
+any object of class that derives from Array or Hash is to append the above Notation for Hash or Array.
+
+For example the Class Layout, that derives from Array. As an Array it stores Symbols, so the instance that represents the Layout of the Module is
+```
+Parfait::Layout(:object_class => ->Module, :layout => ->Layout_Layout) - :name
+   - :instance_methods
+   - :super_class
+   - :meta_class
 ```
 
 ### References
 
 An object file is a complete unit, but a tree representation of a graph.
-References avoid duplication and endless recursion. The syntax for de-referencing is simply:
+References avoid duplication and endless recursion. The syntax for dereferencing is simply:
 
 ```
-    *25
+    ->25
 ```
 
 and the reference is created by adding an
@@ -91,3 +104,18 @@ before any object, like
 ```
      :result &25 Register::RegisterReference(:symbol => :r4)
 ```
+
+A class may name references to instances by defining
+```
+    def sof_reference_name
+        return some_string
+    end
+```
+
+The Sof Writer will still ensure that these references are globally unique and contain no spaces. But this feature makes for much more readable files as the example shows.
+
+### Example
+
+Sof is meant to write object files. Below is a full example of a minimal object space of the Parfait runtime.
+
+
