@@ -1,7 +1,7 @@
 ## Types and Classes
 
 In our design, objects are made up of Values. We will define Values in a little, but just to clarify,
-objects do not contain other objects, only references. In other words true agrigation of objects
+objects do not contain other objects, only references. In other words true aggregation of objects
 is not supported, only association.
 
 Another common feature for all objects is that they have a class, and without using class
@@ -13,7 +13,7 @@ More about the Layout below.
 ### Values
 
 In the machine design we make the distiction between objects and values explicit.
-Values may be easiest to understand in terms of the implementation, they are store in a machine word.
+Values may be easiest to understand in terms of the implementation, they are stored in a machine word.
 Conceptually they represent different entities from objects, as
 
 - they can not be changed
@@ -29,19 +29,19 @@ This works for the minimal two basic types of integer and reference but has seve
 - can never work for floats, as floats use the whole of the machine word in a way that it is not easy to pinch a bit.
 
 All three of those points are unacceptable, and so we choose to encode the value's type in an external fashion.
-This is explained in the layout section below. In a current implementation we have 4 bits available 
+This is explained in the layout section below. In a current implementation we have 4 bits available
 for the value type and thus much room for extension.
 
 To repeat, objects are made up of values. Values are represented by immutable binary patterns that are nevertheless typed. In our implementation value types are stored external to the value, but in a silicon implementation it would be beneficial to store the type with the value.
 
 ### Layout and Class
 
-Traditionally objects have a minimum of one association, the class. In most systems the class serves 
-the double role of specifying what variables/methods an object has and how those are arranged. 
-We nevertheless want to design an open system, so it should be possible to add instance variables 
+Traditionally objects have a minimum of one association, the class. In some systems the class serves
+the double role of specifying what variables/methods an object has and how those are arranged.
+We nevertheless want to design an open system, so it should be possible to add instance variables
 and methods to objects at run-time. And while it is possible to add this to classes dynamically,
 it can easily be somewhat imprecise (having some objects of a class that have a certain variable,
-but others not), and easily inefficient (when changing all objects of a class to hold nil values, eg). 
+but others not), and easily inefficient (when changing all objects of a class to hold nil values, eg).
 
 Instead of associating the object with it's Class directly, we associate it with it's Layout and
 the Layout with the Class it represents. The diagram below illustrates this,
@@ -53,7 +53,7 @@ Each object has a type word, which encodes the types (type1...typeN) of the valu
 Also each object holds an object reference to the layout for this Object. An object *may* hold
 any amount of instance variables (logically).
 The Layout, being an Object, also has type and layout, but detail is ommitted here for clarity.
-The objects Layout holds the names of all the objects instance variables. The Layout also hold a
+The objects Layout holds the names of all the objects instance variables. The Layout also holds a
 reference to the class for the Object.
 
 As we want a flexible design, the Class object is mutable at any time. The programmer may add,
@@ -67,7 +67,7 @@ valid, and off course if or when there are no such other objects the layout will
 To understand the concepts of Meta and Eigenclass it helps to look at what a Class is for.
 Instead of defining methods on each object separately, as some languages do, a Class lets
 us define methods for a whole group, or class, of objects. The class has a name and it may
-defrive methods from super-classes, but mainly the class syntax lets us define methods for
+derive methods from super-classes, but mainly the class syntax lets us define methods for
 a group of objects, not single objects. To implement a machine, it is necessary to define
 methods on single objects, and to fit that with the class idea, it is necessary to have
 classes that have just one instance (or at least seem to).
@@ -80,7 +80,7 @@ and the only meta-class needed is the Class object.
 
 For our machine we define the Eigenclass of an object to be the object.
 Thus any object may act itself in some ways as a class, and the way it does this
-is by having instance variables that are Methods. We will define Methods precisely 
+is by having instance variables that are Methods. We will define Methods precisely
 in the next chapter, but as the name says, they represent callable objects that hold executable code.
 
 When this idea of the Eigenclass is applied to Class instances, we can see that class methods

@@ -34,7 +34,7 @@ very simple interface is clear, the details have no influnce on our design or an
 little on the implementation.
 
 Off course Class is also a class that is needed, as are several others. To compile a list
-of what is actually needed is part of the design and will be presented inlater chapters.
+of what is actually needed is part of the design and will be presented in later chapters.
 
 ### Language independent
 
@@ -49,4 +49,4 @@ That means that all objects that the machine is made up of, may be saved in a la
 independent format and thus interchanged between languages. The format we use is text based,
 not unlike yaml, yet in a much condensed form to make it easier to read. While this is an
 important part of the machine, it is mostly technical detail and we refer the reader to
-the implementation [here](https://github.com/salama/salama/tree/master/lib/sof).
+the details [here](../appendix/sof.html).

@@ -6,23 +6,24 @@ even with very or very very, similar goals.
 ### Mother Smalltalk
 
 Like no other work Smalltalk-80, and especially the "Blue book" Smalltalk-80: the language and it's implementation has influenced the success of object oriented thinking. Smalltalk is very pure in
-it's object oriented approach and tries to extend that as far as possible into the implementation
-aspect.
+it's object oriented approach and tries to extend that as far as then possible into the
+implementation aspect.
 
 As much as possible that is in a C based implementation. The actual machine is an interpreter and
-as such can not be changed and only minnimally inspected, by the programmer.
+as such can not be changed and only minimally inspected, by the programmer.
 
 Smalltalk introduced the method of value tagging in which the essential run-time distinction
 between integer and reference is made by a bit of the value. Integers are subsequently shifted
-while the bit is masked out for references.
+while the bit is not set for references.
 
-Without any categorization attempts (outside this book) let us call the Smalltalk-80 vm a first
+Without any categorization attempts, outside this book, let us call the Smalltalk-80 vm a first
 generation object machine.
 
 ###  Jvm, Squeak
 
 Java is quite rare among the object oriented languages in that it has a complete and rigorously
-defined instruction set. Alas this instruction set is biased, though not completely, towards java.
+defined instruction set. Alas this instruction set is biased, though not completely, towards the
+language java.
 This is shown by the fact that several other object oriented languages are implemented on top of jvm.
 The bias shows in the in the restrictions that the jvm imposes on those languages.
 
@@ -50,7 +51,7 @@ code generation.
 
 ### Virtual C machine
 
-All above examples use existing c or c tools for machine code generation. 
+All above examples use existing c or c tools for machine code generation.
 These tools (compilers/jits) implement the c machine and as such above approaches all sit on
 top of that c machine.
 
@@ -62,8 +63,13 @@ especially calling conventions.
 
 On the other side there is a fair bit of hardware functionality that the c machine does not expose
 to the programmer as language features. Branching on overflow condition is a good example of this.
-C relies on the assembler integration to do that, and as such this can never be part 
+C relies on the assembler integration to do that, and as such this can never be part
 of the language core.
 
-So by using a c implementation (or a to c translation), one builds on the c machine, and thus 
-never has complete control over the actual machine. The c compiler inserts code that cannot be changed.
+So by using a c implementation (or a to c translation), one builds on the c machine, and thus
+never has complete control over the actual machine. The c compiler inserts code that cannot be
+changed.
+
+As this seems to be a stumbling point for many people who read about the object machine and it's
+implementation for the first time, there is a a Appendix dedicated to the c machine and it's
+properties.

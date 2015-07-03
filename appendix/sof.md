@@ -5,7 +5,7 @@
 For completeness we add a brief description of the object file format used by the object machine.
 This is what makes the machine language independent.
 
-The format is not unlike yaml, but much more compact in that it allows several items on one line. 
+The format is not unlike yaml, but much more compact in that it allows several items on one line.
 Also it is specific to the object machine, and as such uses class names un-scoped.
 
 We will define this by example and refer to the implementation for details:
@@ -299,5 +299,3 @@ Sof is meant to write object files. Below is an example of a minimal object spac
  - :next_frame
 
 ```
-
-

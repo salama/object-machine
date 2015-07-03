@@ -24,7 +24,7 @@ data hiding. This means only the objects methods have access to its internal dat
 
 Also each object has a class that may not change during it's life-cycle. A class may derive from
 other classes and derivation may change. As in ruby, we call classes that can not be instantiated
-modules. Eigenclasses are not only supported but integral to the machine.
+modules. Eigenclasses are not only supported but integral to the machine, as everything is objects.
 
 #### Message passing
 
@@ -63,14 +63,14 @@ objects, so we call it object machine.
 Our aim is to define a set of objects, including a set of instructions, that can implement an
 object oriented language as defined above.
 
-Defining the objects as pure data structures is somewhat hard to understand, we will define them
+As defining the objects as pure data structures is somewhat hard to understand, we will define them
 in an object oriented language and then define a method to externalize them in a language
 independent manner. The language of choice is ruby, but it should be noted that parsing ruby is
-not part of the object machine functionality.
+not part of the object machine functionality, and that this does not restrict the machine to ruby.
 
 #### Instruction Set
 
-The set of Instructions and their meaning defines what the machine will actually do. The instruction
+The set of Instructions and their meaning defines how the machine will actually work. The instruction
 set is what would be assembler for a cpu. But since we are not building a physical machine there is
 no need to define a concise binary encoding either. We will see in the implementation section how to
 transform object machine instructions to cpu executable instructions.
