@@ -1,7 +1,7 @@
 ## Methods
 
-As we have seen in the previous chapter, the object machines objects contains,
-as their instance variables, bit data and methods. Off course, in an object oriented system,
+As we have seen in the previous chapter, the object machines objects contain,
+as their instance variables, binary data and methods. Off course, in an object oriented system,
 the distinction is not so great, as methods are represented as objects too.
 
 From a programs perspective the Method object is quite opaque and it is mostly
@@ -10,17 +10,17 @@ But for the machine the structure is essential to the working of the machine.
 And how methods actually provide the callable functionality is the topic of the rest of this chapter.
 The diagram below gives an overview of the classes involved.
 
-![Method diagram](http://yuml.me/23cef8f6)
+![Method diagram](../diagrams/control.png)
 
 ### Blocks
 
-The idea of Methods is that they are callable and execute code.
-In the object Machine Code is represented as a sequence of instructions.
+The idea of Methods is that they are jumpable and execute code.
+In the object machine Code is represented as a sequence of instructions.
 The exact definition of the Instructions will be a subsequent chapter,
-here we just want to explain the parts of the Hierarchy that pertains to flow control,
+here we just want to explain the parts of the hierarchy that pertains to flow control,
 as this influences the structure of the Method.
 
-We can see from the diagram that the Call instruction holds a reference to a method,
+We can see from the diagram that the Call instruction holds a reference to a Method,
 obviously the method that is to be executed when the instruction is executed.
 But to implement control structures we also need a jump or Branch instruction.
 Branches have been banned from programming languages, where they are often called goto,
@@ -38,8 +38,8 @@ So a Branch instruction holds a reference of the Block it jumps to.
 A Block in turn is a linear sequence of Instructions and if it contains a Call
 or Branch instruction it does so as it's last instruction.
 Methods hold a sequence of Blocks, and if a Block does not call or branch,
-control flows implicitly to the next Block. 
- 
+control flows implicitly to the next Block.
+
 
 ### Calling
 
@@ -112,7 +112,7 @@ This will become important when defining the instruction set.
 
 ### Exceptions
 
-As we have seen, the return address of a regular return is a hidden argument in the Message. 
+As we have seen, the return address of a regular return is a hidden argument in the Message.
 To implement exceptions we need to be able to "return" to a point across several function invocations,
 but in essence it is the same thing. We store the last exception address in the Message.
 This may be changed and setting it is equivalent to the language concept catch that many languages have.
@@ -125,4 +125,3 @@ implemented. We do not need to unwind any cryptic stack frames or free any memor
 keep book of anything to be freed or cleaned up. Messages and Frames are normal objects
 and when they can not be reached they will be collected. Collection of Messages and
 Frames makes them available for use for new Method invocations.
-
