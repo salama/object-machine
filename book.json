@@ -1,11 +1,11 @@
 {
     "plugins": [],
     "pluginsConfig": {},
-    "version": "0.0.0",
+    "version": "0.2.1",
     "description": "",
     "repository": {
         "type": "git",
-        "url": "https://github.com/dancinglightning/object-machine.git"
+        "url": "https://github.com/salama/object-machine.git"
     },
     "author": "Torsten <torsten@villataika.fi>"
 }

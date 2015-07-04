@@ -24,15 +24,20 @@ Values have type, and this type is known at run-time. As we mentioned in the fir
 early implementations used to tag the machine word with a bit, signaling this type.
 This works for the minimal two basic types of integer and reference but has several drawbacks, it:
 
-- is not extensible. It uses a bit to store a possible of two values. One could arguably use more bits, but that would increase below issues, while not resolving all
-- makes  data exchange difficult, as external api's may use the full width of the word, not minus one bit. In network traffic and operating system calls this can cause problems
-- can never work for floats, as floats use the whole of the machine word in a way that it is not easy to pinch a bit.
+- is not extensible. It uses a bit to store a possible of two values. One could arguably use more
+  bits, but that would increase below issues, while not resolving all
+- makes  data exchange difficult, as external api's may use the full width of the word, not minus
+  one bit. In network traffic and operating system calls this can cause problems
+- can never work for floats, as floats use the whole of the machine word in a way that it is not  
+  easy to pinch a bit.
 
-All three of those points are unacceptable, and so we choose to encode the value's type in an external fashion.
-This is explained in the layout section below. In a current implementation we have 4 bits available
-for the value type and thus much room for extension.
+All three of those points are unacceptable, and so we choose to encode the value's type in an
+external fashion. This is explained in the layout section below. In a current implementation we
+have 4 bits available for the value type and thus much room for extension.
 
-To repeat, objects are made up of values. Values are represented by immutable binary patterns that are nevertheless typed. In our implementation value types are stored external to the value, but in a silicon implementation it would be beneficial to store the type with the value.
+To repeat, objects are made up of values. Values are represented by immutable binary patterns that
+are nevertheless typed. In our implementation value types are stored external to the value,
+but in a silicon implementation it would be beneficial to store the type with the value.
 
 ### Layout and Class
 

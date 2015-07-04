@@ -26,13 +26,14 @@ languages to exchange data in a text format that provides diffs, easy parsing an
 
 ### Set
 
-The possibly most used instruction is Set, which moves data from one object to another.
+Possibly the most used instruction is Set, which moves data from one object to another.
 Since we have an object machine, there is no other place for data to be but inside objects.
-This is a bit like the opposite of a register machine model, which never moves data straight
+This is somewhat the opposite of a register machine model, which never moves data straight
 from memory to memory.
 
-The Set Instruction needs the two addresses of the data, and to model that we use an integer
-index into the object. So the machine views the object as an array-like structure, with the
+The Set Instruction needs the two addresses of the data, and to model that we use the object
+and an integer index into the object.
+So the machine views the object as an array-like structure, with the
 fixed overhead of type and layout described earlier. While the index is 0 based, that includes
 the Layout and as such any payload data starts at index 1.
 
@@ -50,7 +51,7 @@ foo and bar, meta code for the Set instruction would be
 ```
 
 Rembering that the machine does not have arbitrary object access, but that just 4 objects
-are accesible, message, frame, self and new_message.
+are accessible, message, frame, self and new_message.
 
 ### InstanceGet
 

@@ -10,8 +10,9 @@
 * [Object Machine](object/machine.md)
    * [Types and Classes](object/types.md)
    * [Methods and Blocks](object/methods.md)
-   * [Instruction Set](object/instructions.md)
    * [Layers and Passes](object/layers_and_passes.md)
+   * [Architecture](object/architecture.md)
+   * [Instruction Set](object/instructions.md)
 * [Register Machine](register/machine.md)
    * [Register use](register/use.md)
    * [Instruction Set](register/instructions.md)
@@ -22,4 +23,3 @@
    * [Executable](implementation/elf.md)
 * [Appendix](appendix/sof.md)
    * [Object file](appendix/sof.md)
-
