@@ -21,7 +21,7 @@ have been designed as text representation. As mentioned we do have a text repres
 which is human readable, but that is not it's main purpose. It's main purpose it to allow
 languages to exchange data in a text format that provides diffs, easy parsing and some readability.
 
-![Instruction Diagram](http://yuml.me/fc82f1db)
+![Instruction Diagram](../diagrams/instructions.png)
 
 
 ### Set
@@ -72,19 +72,19 @@ based implementations this would include saving the return address and possibly 
 register shuffling.
 
 Another responsibility of this instruction is to determine whether a Frame will be needed.
-A separate instruction exists to create a Frame,as we will see below. 
+A separate instruction exists to create a Frame,as we will see below.
 MethodEnter retains a reference to the Method that is entered to make the decision about the Frame.
 
 ### NewFrame
 
-NewFrame is an instruction to create a new Frame object. When a method executes it 
-stores (see Set) temporary and local variables in the Frame. 
+NewFrame is an instruction to create a new Frame object. When a method executes it
+stores (see Set) temporary and local variables in the Frame.
 In the implementation the Space keeps a pool of Frame objects which can be handed out quickly.
 
 ### MethodCall
 
 A MethodCall instruction issues the call to a specific Method. The Method is not resolved,
-but must be given as a parameter. The implementation resolves the memory address and jumps there. 
+but must be given as a parameter. The implementation resolves the memory address and jumps there.
 It does other things which we will explain later.
 
 ### MethodReturn
@@ -101,8 +101,8 @@ easy for the register implementation to shuffle the data around and jump back.
 MessageSend is the instruction that is used to represent the most common case in
 object oriented languages where a method and receiver are specified, but the actual
 Method needs to be resolved. The normal resolve is to check for a Method in the
-receivers object (ie it's layout), and then traverse the class hierarchy. 
-Should none be found a method called method_missing is resolved instead, 
+receivers object (ie it's layout), and then traverse the class hierarchy.
+Should none be found a method called method_missing is resolved instead,
 and this is guaranteed to be found in Object.
 
 This implementation is off course quite complicated and as such implemented in code at
@@ -124,11 +124,11 @@ they are easier understood and handled.
 #### Branch
 
 Branch is a an abstract base class and as such instances have no meaning. All branch instruction
-nevertheless must derive from this class and have meaningful names that 
+nevertheless must derive from this class and have meaningful names that
 describe what it is they branch on.
 
 The base class carries the branch target, ie the block that the branch will jump to if positive.
-If the branch is not taken, control flows implicitly to the next Block. 
+If the branch is not taken, control flows implicitly to the next Block.
 
 Notice that a branch must be the last instruction in a Block, and also that the target
 must always be a Block, not an Instruction.
@@ -146,5 +146,3 @@ at the beginning, not the end, of the loop.
 IsTrue branches when the object is true, and true means neither false not nil.
 The object that is being evaluated is the return value. This may sound strange at first,
 but return doubles as the last evaluated expression value.
-
-
