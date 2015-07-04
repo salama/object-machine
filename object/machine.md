@@ -20,7 +20,7 @@ and then the final chapter will detail the way we commence compilation to create
 After the objects and the instruction set is defined, we can create a self referential
 representation of the machine.
 
-### Basic classes asumed
+### Basic classes assumed
 
 Every object oriented language needs basic objects of byte and integer arrays.
 We will assume their existence without much detail. Given the description

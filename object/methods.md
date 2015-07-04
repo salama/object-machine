@@ -67,7 +67,7 @@ since we want to do this too in an object oriented fashion.
 
 #### Message
 
-Because function must often be resolved at run-time, one often speaks of sending messages
+Because the function must often be resolved at run-time, one often speaks of sending messages
 in object oriented languages. So to make all information passed explicit, in an oo fashion,
 we define a Message class with the following attributes:
 
@@ -78,50 +78,54 @@ we define a Message class with the following attributes:
 - exceptional return address
 - Frame object for local and temporary variables
 
+A Message is the basis for message sending that is the basis of object oriented programming.
+Sending a message involves finding the right Method and calling that. So all sending boils down to
+calling a method.
 
-To implement message passing we then just need to create a Message object and send it.
-We go into the sending part below, but once it is sent, the return address stored,
-and a method been found, we just need to transfer control.
+#### Calling
 
-In analogy to the c example, it is up to the method to create and store the Frame object.
-So the Frame is not set by the caller, even there is a space in the message.
-The reason for this is so we have the Frame stored in a defined place.
+Calling a Method is quite simple: We acquire a message (see below) and fill in the data, arguments,
+method name and receiver. On the vm level we use an instruction to call the method. At
+register level this gets resolved to a machine call to the binary code.
 
-### Sending
+#### Sending
 
-Sending a message involves a little more than the calling described above.
-For one thing the Message has to be created. For this the machine keeps a list of unused
-messages and so the process starts by taking the first free of the list.
+Sending a message involves a little more than the calling described above, but from a vm
+instruction level it is actually very similar. We gather arguments, message name and receiver.
+But instead of a Call Instruction we issue a Send Instruction.
 
-When this happens, we are still processing the current message, so we call the next massage NewMessage. NewMessage could be a temporary variable, ie stored in the frame,
-but because we need to access it's data we make it a separate object.
-Gathering the arguments, the receiver and message name are straigh forward
-and we can issue the Send instruction which will be covered in more detail below.
-Sending a message is guaranteed to result in a function call.
-We guarantee this my calling *message_missing* if no message is found.
+The implementation of the send instruction is one of the few that actually happens at the vm
+level. As mentioned, we need to find the function to call, and if we can not find any, we call
+*method_missing*. So we always resolve a Send to a Call.
 
-We note that we now have exactly four objects whose data the machine accesses.
-These are
 
-- current message
-- receiver
-- frame
-- next message
+### Static Message Chain
 
-This will become important when defining the instruction set.
+An interesting and not immediately obvious consequence of this design is the ease with which it is
+implemented. Specifically all message may be created at runtime and linked into a double linked
+list. The forward link lest us easily make a new message available, and te backward link let's us
+return the previous state.
+
+Especially programmers who may think of call graphs, may woder why no dynamic, or run-time, work is
+required here. Why a list is enough and not a graph needed.
+Maybe the easiest way to understand this is by anlogy to the c world. C uses a stack, ie an array,
+not a linked list. But the important thing is that the stack is also allocated at compile-time and
+does not change. Or it may have to be extended when space runs out, but that is not covered in this
+discussion (neither for the messages).
+
+Making a new message available is thus really easy and that does off course mean fast. All we need
+to do is follow the link of the list, so in essences one cpu instruction.
 
 ### Exceptions
 
 As we have seen, the return address of a regular return is a hidden argument in the Message.
-To implement exceptions we need to be able to "return" to a point across several function invocations,
-but in essence it is the same thing. We store the last exception address in the Message.
+To implement exceptions we need to be able to "return" to a point across several function
+invocations, but in essence it is the same thing. We store the last exception address in the Message.
 This may be changed and setting it is equivalent to the language concept catch that many languages have.
-If it is not set in a Method, the Message creation copies the old address over,
-and so when an exception is raised, the return is over as many Method invocations as
-the exception address has not been set.
+If it is not set in a Method, a raise will traverse the Message chain until it finds
+a Message where it is set and return to that point.
 
 A side effect of this object oriented design is the ease with which such a raise/catch may be
 implemented. We do not need to unwind any cryptic stack frames or free any memory or indeed
-keep book of anything to be freed or cleaned up. Messages and Frames are normal objects
-and when they can not be reached they will be collected. Collection of Messages and
-Frames makes them available for use for new Method invocations.
+keep book of anything to be freed or cleaned up. Only the Message data, especially arguments
+needs to be zeroed for garbage collection to work properly.
