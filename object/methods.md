@@ -129,3 +129,12 @@ A side effect of this object oriented design is the ease with which such a raise
 implemented. We do not need to unwind any cryptic stack frames or free any memory or indeed
 keep book of anything to be freed or cleaned up. Only the Message data, especially arguments
 needs to be zeroed for garbage collection to work properly.
+
+## Machine Objects
+
+- current message
+- receiver
+- frame
+- next message
+
+This will become important when defining the instruction set.

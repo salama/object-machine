@@ -1,40 +1,27 @@
 # Object Machine
 
 The state of the object machine is completely defined by objects, in the same way a the state
-of a c machine is defined by its memory. And just as some memory is function code,
-some of the objects define methods, some instructions and so on.
-
-We do use classes in the design, but a programm running on the machine may work with just objects
+of a c machine is defined by its memory. We will see below what objects, and how they are created.
+We do use classes in the design, but a program running on the machine may work with just objects
 in a sort of javascript way if it wants to.
 
-We will define the basic class mechanism in the next chapter and then go on to define how methods
-are represented and called.
+![Vm Architecture](../diagrams/architecture.png)
 
-Then we will define the instruction set and define how they affect which objects.
-At that point we will have a self sufficient Set of objects we call the Object Space
-and if we were hardware engineers we could go and bend silicon into shape.
+Above is a basic diagram of the machine architecture. The following subchapters will detail many of
+the aspects shown in more detail.
 
-Since we want to produce a software machine we will need to talk a bit about memory layout
-and then the final chapter will detail the way we commence compilation to create a binary.
+But the main thing to understand is that a dynamic object machine requires a relatively large
+run-time. In an object oriented system, this means both data (objects) and functionality (functions).
+And the easiest way to achieve the generation of the required
+objects is to reuse the run-time at compile-time. This will be explained in the first sub-chapter.
 
-After the objects and the instruction set is defined, we can create a self referential
-representation of the machine.
+In the following chapter we define our class system and how we achieve the desired dynamic behavior.
+Then we will define the methods are represented and called. This will lead to the objects the
+machine actually works on, mostly Messages.
 
-### Basic classes assumed
+Then we delve into the aspect of code generation and the layered structure to achieve this in
+small definable Passes. Finally we represent the full instruction set for completeness.
 
-Every object oriented language needs basic objects of byte and integer arrays.
-We will assume their existence without much detail. Given the description
-they will be easy to conceive, but tricky to get right in practise.
-
-Also, slightly more complex, an object to object mapping, called Hash in ruby tradition,
-will be assumed.
-
-Concrete implementations of these are interesting to some off course, but as long as the
-very simple interface is clear, the details have no influnce on our design or and
-little on the implementation.
-
-Off course Class is also a class that is needed, as are several others. To compile a list
-of what is actually needed is part of the design and will be presented in later chapters.
 
 ### Language independent
 
