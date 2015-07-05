@@ -52,7 +52,7 @@ Instead of associating the object with it's Class directly, we associate it with
 the Layout with the Class it represents. The diagram below illustrates this,
 as an object (not class) diagram.
 
-![Object diagram](http://yuml.me/8ea6a0c7)
+![Object diagram](../diagrams/layers.png)
 
 Each object has a type word, which encodes the types (type1...typeN) of the values the object holds.
 Also each object holds an object reference to the layout for this Object. An object *may* hold
