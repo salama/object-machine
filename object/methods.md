@@ -130,11 +130,16 @@ implemented. We do not need to unwind any cryptic stack frames or free any memor
 keep book of anything to be freed or cleaned up. Only the Message data, especially arguments
 needs to be zeroed for garbage collection to work properly.
 
-## Machine Objects
+## Machines Objects
+
+The machine, being object oriented, must work on objects. In fact four objects are enough, and these
+are:
 
 - current message
 - receiver
 - frame
 - next message
 
-This will become important when defining the instruction set.
+The machine only ever moves data around these four objects, and may change the objects themselves too.
+Anything that can not be achieved by that, requires a method call and thus requires onlly these
+four objects.
