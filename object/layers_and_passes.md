@@ -16,7 +16,7 @@ and especially with this design we would expect the arm layer to be independent 
 the object machine layer and vice versa. And while this is true for the most part,
 we will also see a way in which is is not in the next section.
 
-![Main Layers](../diagrams/layout.png)
+![Main Layers](../diagrams/layers.png)
 
 #### Register Machine
 
