@@ -81,18 +81,6 @@ Values
     <id>Relation</id>
     <coordinates>
       <x>370</x>
-      <y>120</y>
-      <w>110</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-m1=1</panel_attributes>
-    <additional_attributes>10.0;20.0;90.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>370</x>
       <y>140</y>
       <w>110</w>
       <h>40</h>
