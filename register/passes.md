@@ -37,3 +37,8 @@ Set moves data from one object to another in one oo instruction, but at the regi
 - move data to destination with SetSlot
 - transfer the type information to the new Slot
 
+## MessageImplementation
+
+Make a new Message available
+
+- move next_message from message to register r3

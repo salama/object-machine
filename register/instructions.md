@@ -2,14 +2,18 @@
 
 This chapter will define the instructions of the Register Machine.
 As we do not yet have a second implementation other than arm, the main benefit of this
-is to define meaningfull names for the actions/instructions of the abstract machine so
+is to define meaningful names for the actions/instructions of the abstract machine so
 we can better understand what it does. The next layer, the arm machine,
 is on purpose quite close to assembler, to make it easier to work with existing documentation.
 This does mean though that the names used are traditionally cryptic.
 
-As this is not the focus of the book, we will keep it short and refer to the actual code for more details.
+As this is not the focus of the book, we will keep it short and refer to the actual code for more
+details.
 Also the next chapter will give a very brief overview of what passes are implemented,
 and how those implement the object machine.
+
+![Instructios](../diagrams/register_instructions.png)
+
 
 ### GetSlot
 
@@ -18,7 +22,7 @@ we need three in the Register Machine, to from and between registers.
 
 GetSlot moves what is essentially an instance variable to a register.
 Often the register will be one of the scratch ones, but to implement the calling logic,
-the first three must be set too.
+the first four (corresponding to the object machine objects) must be set too.
 
 GetSlot uses an object reference and an index, but the reference must be given as a register name.
 It moves the data at that index to the register given as first parameter.
@@ -56,11 +60,11 @@ This is separate from the FunctionCall to allow for different implementations of
 the set and the initial control transfer.
 
 A Main may have to do address translation for the objects loaded if the exe is loaded
-to a different address. 
+to a different address.
 
 ### LoadConstant
 
-Load the given Constant into the given register. Constants may be object references or integers. 
+Load the given Constant into the given register. Constants may be object references or integers.
 
 ### FunctionReturn
 
