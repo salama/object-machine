@@ -16,7 +16,7 @@ and especially with this design we would expect the arm layer to be independent 
 the object machine layer and vice versa. And while this is true for the most part,
 we will also see a way in which is is not in the next section.
 
-![Main Layers](http://yuml.me/59576e82)
+![Main Layers](../diagrams/layout.png)
 
 #### Register Machine
 
@@ -48,11 +48,13 @@ aspects of the machine apart from small details like the mnemonic names or their
 Since we have now defined the layers we shall use, the process of generating an executable
 becomes tumbling down those layers. We need to define the Object Machine in terms of
 the Register Machine, and then the Register in terms of the Arm machine.
-But this is true for the instructions only, other objects of the object machine stay valid.
+But this is true for the instructions only, the runtime objects of the object machine stay valid.
 
 This and other reasons have prompted us to use an iterative approach to the conversion process.
 We call these iterations Passes. A Pass runs, or passes, over the instruction stream of a
 Method and changes it as it sees fit.
+
+![Passes](../diagrams/passes.png)
 
 The result of all Passes of a layer results in the desired transformation from one machine
 instruction set to another. In other words the sum of one machines Passes
@@ -75,7 +77,7 @@ Other advantages are :
 - easier to do half steps (or indeed makes it possible, see below)
 - easy to extend at any point in the process
 
-Passes are registered at object space level and can ordered before or after other known steps.
+Passes are registered at virtual machine and can be ordered before or after other known steps.
 So even external libraries can add Passes to any compilation step for any machine.
 
 The observant reader will have noticed that there are some object machine instructions that
@@ -85,4 +87,3 @@ including a MessageCall.
 
 Both following chapters about the definition of the Register Machine and the Arm implementation
 rely heavily on this Pass architecture.
-
