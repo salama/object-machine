@@ -28,7 +28,7 @@ static object orientation, they are quite not-object oriented.
 One can look at c as a way to write higher level assembler. As a way not to have to write the
 assembler instruction, but still effect a very defined outcome. In fact that is most likely what
 was intended in the beginning. Off course as the language grew in features, the mappings to assembler
-became less and less clear and with optimisation techniques and so may cpu's it is unlikely that
+became less and less clear and with optimization techniques and so may cpu's it is unlikely that
 anyone but a compiler writer can predict the mapping to assembly anymore.
 
 Still, the point is that c is perceived as a language that can map to assembler in a straightforward
