@@ -77,11 +77,24 @@ that we couldn't.
 
 C uses pinned registers just like the cpu does. Every cpu will have a Program Counter (pc) to
 know which instruction to execute next. And C invariably uses a stack register to handle
-argument passing. In the same way that the pc is used by the cpu, the stack is used by the compiler.
+argument passing. In the same way that the pc is used by the cpu, the stack is used by the
+compiler, and in all likelihood created for the c language.
 
 This is just to show the usefulness of pinned registers in language implementation and the main
 point here is that c does not allow us to define more pinned registers.
 
+### Multiple returns
+
+A c function always returns to one point, the caller. And while you may nod at this and think off
+course, it is still a restriction. In fact working without this restriction makes exception
+handling much easier, as a the exception just returns to a different caller.
+
+Also multiple returns make a different approach to the type system possible, where functions return
+to different addresses, based on the type that they return. This makes it possible that the code
+that is "returned" to is certain of the type of value it receives. The quotes around the return
+mean to indicate that because of the multiple return addresses, the function may return to a
+different place than where it was called from, and so the word return is meant more in a semantic
+rather than literal way.
 
 ## Hidden features
 
@@ -90,12 +103,12 @@ makes the code actually work in the expected way. Primary among those are functi
 argument passing involved.
 
 C does not define a way to access arguments or local variables from another thread. So any stack
-access needs internal knowledge of the compiler. Stack walking is neccessary for implementing
+access needs internal knowledge of the compiler. Stack walking is necessary for implementing
 exceptions and garbage collection.
 
 ## OS interface
 
-C has the standard library which defines a set of standardized functionaliy, much of which is
+C has the standard library which defines a set of standardized functionality, much of which is
 actually provided by the operating system. This access of the operating system in a functional and
 defined way  was most likely the motivation behind the std lib.
 
