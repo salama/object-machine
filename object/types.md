@@ -28,12 +28,12 @@ This works for the minimal two basic types of integer and reference but has seve
   bits, but that would increase below issues, while not resolving all
 - makes  data exchange difficult, as external api's may use the full width of the word, not minus
   one bit. In network traffic and operating system calls this can cause problems
-- can never work for floats, as floats use the whole of the machine word in a way that it is not  
+- can never work for floats, as floats use the whole of the machine word in a way that it is not
   easy to pinch a bit.
 
 All three of those points are unacceptable, and so we choose to encode the value's type in an
-external fashion. This is explained in the layout section below. In a current implementation we
-have 4 bits available for the value type and thus much room for extension.
+external (though implict) fashion. This is explained in the layout section below.
+In a current implementation we have 4 bits available for the value type and thus much room for extension.
 
 To repeat, objects are made up of values. Values are represented by immutable binary patterns that
 are nevertheless typed. In our implementation value types are stored external to the value,
@@ -54,10 +54,10 @@ as an object (not class) diagram.
 
 ![Object diagram](../diagrams/layout.png)
 
-Each object has a type word, which encodes the types (type1...typeN) of the values the object holds.
-Also each object holds an object reference to the layout for this Object. An object *may* hold
+Each object has a reference to the layout for this Object. But the layout defines the types
+, and if applicable, names that the object holds. An object *may* hold
 any amount of instance variables (logically).
-The Layout, being an Object, also has type and layout, but detail is ommitted here for clarity.
+The Layout, being an Object, also has a layout (with type info), but detail is omitted here for clarity.
 The objects Layout holds the names of all the objects instance variables. The Layout also holds a
 reference to the class for the Object.
 
@@ -66,6 +66,28 @@ or remove variables and methods, even change the inheritance of the class. But i
 to note that the Layout is **immutable**. This means that when the programmer adds an instance
 variable, a **new** Layout is created. This is so that the Layout of other existing objects stays
 valid, and off course if or when there are no such other objects the layout will be collected.
+
+### Implicit type
+
+To understand the Type system as outlined above, it helps to consider the c model: in c all data
+is typed at compile-time, but no type information is available at run-time. The types are **implicit**
+in the code: meaning the code knows how to handle the types without explicit type information checks.
+This is quite different from most object oriented systems, like ruby or smalltalk, that explicitly store type
+information as a bit of every value. And since some operations are not allowed on one type while
+allowed on another, the system checks before applying an operation. Added to the checking effort is
+usually added the effort of wrapping and unrapping the value from it's store representation to the
+natural one (ie bitmasking in mri).
+
+Salama keeps type information **implicitly** in a similar spirit to c. As all types of all values
+of all object are known at compile time, salama knows from the start what types are where. When a change of type happens, the code (rather than the explicit type
+information) that is used is changed. This uses more space (for the extra code), but
+is faster as long as the basic assumption that types don't change too much holds.
+
+
+It is at any momement like the the c model, that is until change happens. Change of type can really only happen at the method boundary, and this is where th eobject machine is very different from c. Different code paths are taken for
+different types both on entering and exiting functions. Details of this are explained in the
+next chapter.
+
 
 ### Meta and Eigenclass
 

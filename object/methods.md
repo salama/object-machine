@@ -12,9 +12,34 @@ The diagram below gives an overview of the classes involved.
 
 ![Method diagram](../diagrams/control.png)
 
+### MethodSource
+
+The MethodSource shown in the diagram is not related to program source code. It holds the virtual
+machine instructions from which we can create machine instructions. The structure in which the
+instructions are store is explained below, here we just want to draw attention to the fact that the
+relationship from Method to MethodSource is not 1 to 1 as one might expect, but 1 to m. The exact
+number of m depends on the number of types, arguments and variables used in the function, and
+also on the implementation.
+
+To illustrate the MethodSource for a minimal function Integer.add taking only one argument b,
+in a minimal system with 2 types (reference and integer). This is actually a Parfait function, but
+if you could write it in code, it would be something like, test b that it is Integer. If so do a
+basic add, check for overflow. If the first check fails you raise and if the second fails you
+delegate to some BigInteger class. If this would be compiled, it would result in two MethodSource
+objects, basically one for the case where b is an Integer and one for when it is an Object.
+The first MethodSource would do the basic addition and the second would unconditionally raise the
+error. In the "body" of both MethodSources there would be total certainty about the type b has
+
+The maximum number of MethodSources (m) is the number of types to the power of all variables,
+including arguments. While this may seem a lot, it is in most cases quite low as oo programs
+have small methods with few arguments.
+Also in a more advanced implementation many of the permutations of types are unused
+and could thus be created on demand.
+
+
 ### Blocks
 
-The idea of Methods is that they are jumpable and execute code.
+The idea of Methods is that they are callable and execute code.
 In the object machine Code is represented as a sequence of instructions.
 The exact definition of the Instructions will be a subsequent chapter,
 here we just want to explain the parts of the hierarchy that pertains to flow control,
@@ -84,8 +109,10 @@ calling a method.
 
 #### Calling
 
-Calling a Method is quite simple: We acquire a message (see below) and fill in the data, arguments,
-method name and receiver. On the vm level we use an instruction to call the method. At
+Calling a Method is relatively simple: We acquire a message (see below) and fill in the data,
+arguments, method name and receiver. Then we have to match the arguments types against to find
+the right MethodSource to call.
+On the vm level we use an instruction to call the method. At
 register level this gets resolved to a machine call to the binary code.
 
 #### Sending
@@ -103,12 +130,12 @@ level. As mentioned, we need to find the function to call, and if we can not fin
 
 An interesting and not immediately obvious consequence of this design is the ease with which it is
 implemented. Specifically all message may be created at runtime and linked into a double linked
-list. The forward link lest us easily make a new message available, and te backward link let's us
+list. The forward link lets us easily make a new message available, and the backward link let's us
 return the previous state.
 
-Especially programmers who may think of call graphs, may woder why no dynamic, or run-time, work is
+Especially programmers who may think of call graphs, may wonder why no dynamic, or run-time, work is
 required here. Why a list is enough and not a graph needed.
-Maybe the easiest way to understand this is by anlogy to the c world. C uses a stack, ie an array,
+Maybe the easiest way to understand this is by analogy to the c world. C uses a stack, ie an array,
 not a linked list. But the important thing is that the stack is also allocated at compile-time and
 does not change. Or it may have to be extended when space runs out, but that is not covered in this
 discussion (neither for the messages).

@@ -11,8 +11,6 @@
     </coordinates>
     <panel_attributes>Object
 --
-- typeword
---
 - layout
 --
 Values
@@ -43,9 +41,9 @@ m1=1</panel_attributes>
     </coordinates>
     <panel_attributes>Layout
 --
-- typeword
---
 - layout
+--
+- typeword
 --
 - class
 --
@@ -64,8 +62,6 @@ Instance Names
       <h>180</h>
     </coordinates>
     <panel_attributes>Class
---
-- typeword
 --
 - layout
 --
