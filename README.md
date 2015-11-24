@@ -3,7 +3,7 @@
 **Design and Implementation**
 
 In this book we set out to define the concepts of an object machine.
-An Object machine is a virtual machine, defined as completely in object terms.
+An Object machine is a like a virtual machine, but defined as completely in object terms.
 
 First we define the design goals, and the design, and go on to detail an existing example
 implementation for the most common cpu, again in object oriented terms.
@@ -19,7 +19,7 @@ other interested people, so if you like
 - virtual machines
 - an overview of salama project
 
-this should be interesing. Also this is an open source book, so if you find something that is
+this should be interesting. Also this is an open source book, so if you find something that is
 unclear or could be improved, file an
 [issue in github](https://github.com/dancinglightning/object-machine/issues).
 
