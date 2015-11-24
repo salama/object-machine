@@ -5,7 +5,7 @@
     "description": "",
     "repository": {
         "type": "git",
-        "url": "git://github.com/salama/object-machine.git"
+        "url": "git@github.com:salama/object-machine.git"
     },
     "author": "Torsten <torsten@villataika.fi>"
 }
