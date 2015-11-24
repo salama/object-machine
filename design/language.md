@@ -1,8 +1,7 @@
-## Machine and Language
+## Syatem and Language
 
-To define the object machine, we need to define what makes a machine. And since the purpose of the
-machine is to run object oriented programs, we need to talk a bit about what those are.
-We start with the language as this is more familiar to software engineers.
+To define the object system, we need to define what it should be able to do: The purpose of the
+system is to run object oriented programs, and so we need to talk a bit about what those are.
 
 ### OO language features
 
@@ -10,21 +9,16 @@ Since Smalltalk, many object oriented languages have been defined and implemente
 in syntax, how dynamic they are, and which oo features they implement. Especially how dynamic
 they are has determined if they are compiled or interpreted.
 
-Our goal is to be language independent, this is why we design a machine and not a language.
-Still, we would like our machine to be able to run as many languages as possible, so we need
-to make the desired features explicit. This we do with an eye to what can be implemented on top
-of another. If we take object encapsulation as an example: it is impossible to implement
-encapsulation when the machine allows unrestricted object access, but trivial to implement free
-access on top of encapsulation via hidden accessors.
+Our goal is to be language independent in the sense that any dynamic object oriented language may be executed by the system.
 
 #### Objects and classes
 
-The machine must off course support the idea of objects, and as outlined above, we choose full
-data hiding. This means only the objects methods have access to its internal data.
+The machine must off course support the idea of objects with attributes and methods.
 
 Also each object has a class that may not change during it's life-cycle. A class may derive from
-other classes and derivation may change. As in ruby, we call classes that can not be instantiated
-modules. Eigenclasses are not only supported but integral to the machine, as everything is objects.
+other classes and derivation may change. 
+
+An object may also carry methods directly and this allows some definition of meta or eigenclass.
 
 #### Message passing
 
@@ -37,46 +31,27 @@ implement message passing.
 
 #### Fully dynamic
 
-The goal is that all aspects of the machine are available to be changed at run-time.
-
-This includes Methods and the state of the machine, in other words it supports closures. But
-also the class hierarchy in all it's aspects and the type system of basic values.
+The goal is that almost all aspects of the system are available to be changed at run-time. Some very basic aspects may require recompilation.
 
 #### Exceptions
 
 Exceptions are an alternate return path over potentially many method invocations. We support
 raising and catching exceptions, ensure and retry.
 
-### Object Machine
+### Object System
 
-A machine capable of running programs defined by an object oriented language as sketched above,
+A system capable of running programs defined by an object oriented language as sketched above,
 can be, and has been, implemented in many ways.
 
-Our main requirement is that the machine too be what is called object oriented in languages.
+Our main requirement is that the system be what is called object oriented in languages.
 
 #### Object based
 
-Instead of calling it object oriented, the machine is really object based, ie based on objects,
-not oriented towards them. And even based seems a little verbose as it is really made up of just
-objects, so we call it object machine.
+Instead of calling it object oriented, the system is really object based, ie based on objects,
+not oriented towards them.
 
-Our aim is to define a set of objects, including a set of instructions, that can implement an
-object oriented language as defined above.
+Our aim is to define a set of objects, and a way of translating them to hardware instructions, that can implement an object oriented language as defined above.
 
-As defining the objects as pure data structures is somewhat hard to understand, we will define them
-in an object oriented language and then define a method to externalize them in a language
-independent manner. The language of choice is ruby, but it should be noted that parsing ruby is
-not part of the object machine functionality, and that this does not restrict the machine to ruby.
-
-#### Instruction Set
-
-The set of Instructions and their meaning defines how the machine will actually work. The instruction
-set is what would be assembler for a cpu. But since we are not building a physical machine there is
-no need to define a concise binary encoding either. We will see in the implementation section how to
-transform object machine instructions to cpu executable instructions.
-
-Off course Instructions, like other classes, are objects. For the machine to have defined behavior,
-we need to define what the instructions do in terms of the other objects of the machine.
 
 #### Explicit values
 
