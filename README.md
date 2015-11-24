@@ -28,8 +28,12 @@ unclear or could be improved, file an
 The book starts by outlining the subject, also in context of previous work and by
 defining design goals for the machine.
 
-The second part is about the actual object machine, it's parts and instructions.
-Then we go on to map this to an abstraction of current hardware, the register machine.
+The second part is about how the system is implemented, specifically this is by defining it's own object oriented system language, and mapping higher languages to that.
+
+The next chapter is about this lower level system language.
+
+Then we go on to trnaslate the system language to an abstraction of current hardware, the register machine.
+
 And the last part is about a concrete implementation on a version of the most common cpu today,
 the arm.
 
