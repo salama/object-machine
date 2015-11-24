@@ -7,11 +7,11 @@ object oriented languages.
 
 To do this we will have to define what makes a machine and what characterises an object oriented
 language. We will see how similar things have been done previously, and how to "build" the initial
-version of such a machine on current hardware.
+version of such a system on current hardware.
 
 ### Design principles
 
-But before we start with designing the actual machine, let's define guiding principles.
+But before we start with designing the actual system, let's define guiding principles.
 Principles that will guide the decisions we have to make on the way.
 
 #### Simple
@@ -31,8 +31,8 @@ If you can leave it out, do.
 
 Since we want to design a minimal system, it needs to be extensible easily. And as it is an 
 open system, easily means a mechanism by which anyone can define more functionality for the 
-machine. Off course with open classes one can always patch, but this is not what we mean.
-Rather a defined interface for at least the central parts of type system and instruction set.
+system. Off course with open classes one can always patch, but this is not the preferred method.
+Rather a defined interface for at least the central parts of type class and object system, and a machine translation. 
 
 This also encourages external developers to improve the machine for different hardware or use cases.
 While obvious examples include cpu/os combinations, also gpu or mmu support should be possible.
