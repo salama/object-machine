@@ -6,8 +6,7 @@ even with very or very very, similar goals.
 ### Mother Smalltalk
 
 Like no other work Smalltalk-80, and especially the "Blue book" Smalltalk-80: the language and it's implementation has influenced the success of object oriented thinking. Smalltalk is very pure in
-it's object oriented approach and tries to extend that as far as then possible into the
-implementation aspect.
+it's object oriented approach and tries to extend that as far as then possible into the implementation aspect.
 
 As much as possible that is in a C based implementation. The actual machine is an interpreter and
 as such can not be changed and only minimally inspected, by the programmer.
