@@ -3,7 +3,7 @@
 **Design and Implementation**
 
 In this book we set out to define the concepts of an object machine.
-An Object machine is a like a virtual machine, but defined as completely in object terms.
+We call an Object machine a system that is able to run dynamic object oriented languages. As such it is like what is called virtual machines, but rather defined as completely in object terms.
 
 First we define the design goals, and the design, and go on to detail an existing example
 implementation for the most common cpu, again in object oriented terms.
@@ -25,8 +25,9 @@ unclear or could be improved, file an
 
 ### Outline
 
-The book starts by outlining the subject, also in context of previous work and
+The book starts by outlining the subject, also in context of previous work and by
 defining design goals for the machine.
+
 The second part is about the actual object machine, it's parts and instructions.
 Then we go on to map this to an abstraction of current hardware, the register machine.
 And the last part is about a concrete implementation on a version of the most common cpu today,
