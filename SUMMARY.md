@@ -22,5 +22,6 @@
    * [Assembly](implementation/assembly.md)
    * [Executable](implementation/elf.md)
 * [Appendix](appendix/sof.md)
-   * [Object file](appendix/sof.md)
    * [C Machine](appendix/c_machine.md)
+* Soml
+
