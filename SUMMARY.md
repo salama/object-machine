@@ -14,7 +14,7 @@
    * [Layers and Passes](object/layers_and_passes.md)
    * [Instruction Set](object/instructions.md)
 * Soml
-   * [Soml](som/soml.md)
+   * [Soml](soml/soml.md)
 * [Register Machine](register/machine.md)
    * [Register use](register/use.md)
    * [Instruction Set](register/instructions.md)
