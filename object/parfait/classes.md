@@ -80,15 +80,15 @@ usually added the effort of wrapping and unwrapping the value from it's store re
 natural one (ie bit masking in mri).
 
 Soml keeps type information **implicitly** in a similar spirit to c. As all types of all values
-of all object are known at compile time, salama knows from the start what types are where. When a change of type happens, the code (rather than the explicit type
-information) that is used is changed. This uses more space (for the extra code), but
+of all object are known at compile time, salama knows from the start what types are where.
+When a change of type happens, the code (rather than the explicit type information) that is
+used is changed. This uses more space (for the extra code), but
 is faster as long as the basic assumption that types don't change too much holds.
 
-
-It is at any moment like the the c model, that is until change happens. Change of type can really only happen at the method boundary, and this is where th eobject machine is very different from c. Different code paths are taken for
-different types both on entering and exiting functions. Details of this are explained in the
-next chapter.
-
+It is at any moment like the c model, that is until change happens. Change of type can really only
+happen at the method boundary, and this is where the object machine is very different from c.
+Different code paths are taken for different types both on entering and exiting functions.
+Details of this are explained in the next chapter.
 
 ### Meta and Eigenclass
 

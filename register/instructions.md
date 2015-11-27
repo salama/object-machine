@@ -12,7 +12,7 @@ details.
 Also the next chapter will give a very brief overview of what passes are implemented,
 and how those implement the object machine.
 
-![Instructios](../diagrams/register_instructions.png)
+![Instructios](../diagrams/instructions.png)
 
 
 ### GetSlot
