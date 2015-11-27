@@ -9,7 +9,7 @@
       <w>270</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>Parser
+    <panel_attributes>Ruby Parser
 - creates syntax tree from source</panel_attributes>
     <additional_attributes/>
   </element>
@@ -21,8 +21,8 @@
       <w>270</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>Syntax Tree	
-- classes shadow language</panel_attributes>
+    <panel_attributes>Abstract Syntax Tree	
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -31,63 +31,22 @@
       <x>110</x>
       <y>100</y>
       <w>270</w>
-      <h>60</h>
+      <h>50</h>
     </coordinates>
-    <panel_attributes>Compiler
-- transform ast to vm instruction
-and parfait object space</panel_attributes>
+    <panel_attributes>Ruby Compiler
+- transform ast to soml</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>110</x>
-      <y>160</y>
-      <w>270</w>
-      <h>180</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>220</x>
-      <y>160</y>
-      <w>160</w>
-      <h>60</h>
-    </coordinates>
-    <panel_attributes>Virtual
-- instructions
-- passes
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>220</x>
-      <y>220</y>
-      <w>160</w>
-      <h>60</h>
-    </coordinates>
-    <panel_attributes>Register
-- instructions
-- passes
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>220</x>
-      <y>280</y>
-      <w>160</w>
-      <h>60</h>
+      <x>250</x>
+      <y>290</y>
+      <w>130</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>Arm
 - instructions
-- passes
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -95,25 +54,68 @@ and parfait object space</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>110</x>
-      <y>190</y>
-      <w>100</w>
-      <h>90</h>
+      <y>330</y>
+      <w>270</w>
+      <h>60</h>
     </coordinates>
-    <panel_attributes>Parfait
-Runtime
-- basic 
-classes</panel_attributes>
+    <panel_attributes>Elf support
+- transform objects and instructions 
+to binary</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>Text</id>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>250</x>
+      <y>210</y>
+      <w>130</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Register
+- instructions
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
     <coordinates>
       <x>110</x>
-      <y>160</y>
-      <w>100</w>
-      <h>70</h>
+      <y>210</y>
+      <w>140</w>
+      <h>120</h>
     </coordinates>
-    <panel_attributes>Adapter</panel_attributes>
+    <panel_attributes>Parfait Runtime
+- basic classes
+  Object/Class
+  Method
+  Space
+  etc</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>110</x>
+      <y>150</y>
+      <w>270</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Soml Compiler
+- transform ast to register instructions 
+   and parfait objects</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>250</x>
+      <y>250</y>
+      <w>130</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Translator
+- to arm
+</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
