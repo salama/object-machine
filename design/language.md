@@ -1,6 +1,6 @@
-## Syatem and Language
+## System or Language
 
-To define the object system, we need to define what it should be able to do: The purpose of the
+To define the object machine, we need to define what it should be able to do: The purpose of the
 system is to run object oriented programs, and so we need to talk a bit about what those are.
 
 ### OO language features
@@ -9,14 +9,16 @@ Since Smalltalk, many object oriented languages have been defined and implemente
 in syntax, how dynamic they are, and which oo features they implement. Especially how dynamic
 they are has determined if they are compiled or interpreted.
 
-Our goal is to be language independent in the sense that any dynamic object oriented language may be executed by the system.
+Our goal is to be language independent in the sense that any dynamic object oriented language
+may be executed by the system. But we do want to compile, which will lead us to define out own
+system language.
 
 #### Objects and classes
 
 The machine must off course support the idea of objects with attributes and methods.
 
 Also each object has a class that may not change during it's life-cycle. A class may derive from
-other classes and derivation may change. 
+other classes and derivation may change.
 
 An object may also carry methods directly and this allows some definition of meta or eigenclass.
 
@@ -31,7 +33,8 @@ implement message passing.
 
 #### Fully dynamic
 
-The goal is that almost all aspects of the system are available to be changed at run-time. Some very basic aspects may require recompilation.
+The goal is that almost all aspects of the system are available to be changed at run-time.
+Some very basic aspects may require recompilation.
 
 #### Exceptions
 
@@ -50,7 +53,8 @@ Our main requirement is that the system be what is called object oriented in lan
 Instead of calling it object oriented, the system is really object based, ie based on objects,
 not oriented towards them.
 
-Our aim is to define a set of objects, and a way of translating them to hardware instructions, that can implement an object oriented language as defined above.
+Our aim is to define a set of objects, and a way of translating them to hardware instructions,
+that can implement an object oriented language as defined above.
 
 
 #### Explicit values

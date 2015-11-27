@@ -1,9 +1,12 @@
-# An object system
+# The object machine
 
 **Design and Implementation**
 
-In this book we set out to define the concepts of an object system.
-We call an Object system a system that is able to run dynamic object oriented languages. As such it is like what is called virtual machines. But rather than an interpreted virtual machine, we aim for  a system that is completely defined by objects and their api. It's more of a language, but without the syntax.
+In this book we set out to define the concepts of an object machine.
+We call an Object machine a system that is able to run dynamic object oriented languages.
+As such it is like virtual machines, but it is not interpreted.
+Rather we aim for  a system that is completely defined by objects and their api.
+It's more of a language, but without the syntax.
 
 First we define the design goals, and the design, and go on to detail an existing example
 implementation for the most common cpu, again in object oriented terms.
@@ -28,11 +31,12 @@ unclear or could be improved, file an
 The book starts by outlining the subject, also in context of previous work and by
 defining design goals for the machine.
 
-The second part is about how the system is implemented, specifically this is by defining it's own object oriented system language, and mapping higher languages to that.
+The second part is about how the system is implemented, specifically this is by defining it's own
+object oriented system language, and mapping higher languages to that.
 
 The next chapter is about this lower level system language.
 
-Then we go on to trnaslate the system language to an abstraction of current hardware, the register machine.
+Then we go on to translate the system language to an abstraction of current hardware, the register machine.
 
 And the last part is about a concrete implementation on a version of the most common cpu today,
 the arm.

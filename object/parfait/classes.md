@@ -1,4 +1,4 @@
-## Types and Classes
+## Classes and Values
 
 In our design, objects are made up of Values. We will define Values in a little, but just to clarify,
 objects do not contain other objects, only references. In other words true aggregation of objects
@@ -12,7 +12,7 @@ More about the Layout below.
 
 ### Values
 
-In the machine design we make the distiction between objects and values explicit.
+In the machine design we make the distinction between objects and values explicit.
 Values may be easiest to understand in terms of the implementation, they are stored in a machine word.
 Conceptually they represent different entities from objects, as
 
@@ -30,10 +30,10 @@ This works for the minimal two basic types of integer and reference but has seve
   one bit. In network traffic and operating system calls this can cause problems
 - can never work for floats, as floats use the whole of the machine word in a way that it is not
   easy to pinch a bit.
+- incurs a high run-time cost for masking, unmasking and type checking.
 
-All three of those points are unacceptable, and so we choose to encode the value's type in an
+All four of those points are unacceptable, and so we choose to encode the value's type in an
 external (though implict) fashion. This is explained in the layout section below.
-In a current implementation we have 4 bits available for the value type and thus much room for extension.
 
 To repeat, objects are made up of values. Values are represented by immutable binary patterns that
 are nevertheless typed. In our implementation value types are stored external to the value,
@@ -72,19 +72,20 @@ valid, and off course if or when there are no such other objects the layout will
 To understand the Type system as outlined above, it helps to consider the c model: in c all data
 is typed at compile-time, but no type information is available at run-time. The types are **implicit**
 in the code: meaning the code knows how to handle the types without explicit type information checks.
-This is quite different from most object oriented systems, like ruby or smalltalk, that explicitly store type
-information as a bit of every value. And since some operations are not allowed on one type while
+While normal in static languages, it is different from dynamic object oriented systems, like
+ruby or smalltalk, that explicitly store type information as a bit of every value.
+And since some operations are not allowed on one type while
 allowed on another, the system checks before applying an operation. Added to the checking effort is
-usually added the effort of wrapping and unrapping the value from it's store representation to the
-natural one (ie bitmasking in mri).
+usually added the effort of wrapping and unwrapping the value from it's store representation to the
+natural one (ie bit masking in mri).
 
-Salama keeps type information **implicitly** in a similar spirit to c. As all types of all values
+Soml keeps type information **implicitly** in a similar spirit to c. As all types of all values
 of all object are known at compile time, salama knows from the start what types are where. When a change of type happens, the code (rather than the explicit type
 information) that is used is changed. This uses more space (for the extra code), but
 is faster as long as the basic assumption that types don't change too much holds.
 
 
-It is at any momement like the the c model, that is until change happens. Change of type can really only happen at the method boundary, and this is where th eobject machine is very different from c. Different code paths are taken for
+It is at any moment like the the c model, that is until change happens. Change of type can really only happen at the method boundary, and this is where th eobject machine is very different from c. Different code paths are taken for
 different types both on entering and exiting functions. Details of this are explained in the
 next chapter.
 

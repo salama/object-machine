@@ -1,8 +1,8 @@
-## Interpret and Compile
+## Interpret or Compile
 
 For many people object oriented languages are synonymous with slow.
-This is especially strange since even early Smalltalk implementations had gui's implemented in Samlltalk.
-But mostly it is a misconception fuelled by two facts:
+This is especially strange since even early Smalltalk implementations had gui's implemented in
+Smalltalk. But mostly it is a misconception fuelled by two facts:
 
 - many object oriented language implementations choose to interpret
 - object oriented languages are dynamic and thus integrate many more features into the language
@@ -11,32 +11,24 @@ Let's look at both of those reasons and see how they relate to our object machin
 
 #### Interpretation
 
-There are several reasons to choose interpretation over compilation, and which is the most
-important of those will depend on the person or organization making the choice.
+There are several understandable reasons to choose interpretation over compilation:
 
 Readily available compilation tools for another language but the one implemented is probably
 the primary factor for most implementors. Platform independence is highly rated and perceived
 as a very difficult task. If not difficult at least an unnecessary extra. Especially c has with
 gcc, and nowadays llvm, a solid multi-platform implementation. Also c is well know to many so
-getting started may be quick. LLvm even has a vm toolkit, and even without that, implements an
-embeddable jit, an implementors dream come true.
+getting started may be quick. LLvm even implements an embeddable jit, an implementors dream come true.
 
 For the object machine we care mostly about the arm cpu, and the fact that it should be possible
 to create a port with relative ease. That is if a person knows the language (ruby) and the
 cpu (say Intel) it should be possible to port the machine in less than a quarter of the time it
-took to create it. C has not started out the standardized, readily available platform that it is 
+took to create it. C has not started out the standardized, readily available platform that it is
 now, so why should an object oriented platform be different.
 
 Especially when choosing another language to implement the target language interpretation is the
 straightforward choice. Implementing an object oriented language is difficult enough, without
 trying to manipulate the implementation at runtime. Also the tool mismatch of implementation and
 target language is hard to overcome.
-
-Another reason to choose the interpretation would be to achieve some kind of platform independence.
-This may be the case for java, thus encouraging independent implementations. For an individual
-person the extra effort may not be worth it.
-Nevertheless other languages have ad-hoc, or implicitly, defined instruction sets that serve as a
-basis for the interpretation.
 
 In summary, while interpretation leads to an easy start and portable code, it necessarily creates
 run-time overhead that can not be changed (or never has been). It also leads to a black box from
@@ -55,7 +47,7 @@ And by avoiding dynamic behavior like this it manages to be only about 20-30 per
 than c on common shootouts.
 
 Another less well known, and much more recent, example is the crystal language (crystal-lang).
-Crystal borrows rubies ideas and syntax heavily, but adds some type syntax. It uses type inference 
+Crystal borrows rubies ideas and syntax heavily, but adds some type syntax. It uses type inference
 to determine all types at run-time and flags any code where this can not be done as erroneous.
 Crystal, by now implemented in crystal, uses llvm to create executables similarly to c++.
 
@@ -80,4 +72,3 @@ the task more understandable. Also gcc had grown over the years and decades and 
 languages used to ease the tasks that c makes hard were difficult to understand.
 
 We hope to prove this theory, that a same language implementation will result in speed improvements.
-

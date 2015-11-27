@@ -1,10 +1,11 @@
 ## Methods
 
-As we have seen in the previous chapter, the object machines objects contain,
+As we have seen in the previous chapter, that the object machines objects contain,
 as their instance variables, binary data and methods. Off course, in an object oriented system,
-the distinction is not so great, as methods are represented as objects too.
+the distinction is not so great, as methods are represented as objects too., but still, only
+methods are callable.
 
-From a programs perspective the Method object is quite opaque and it is mostly
+From a application programers perspective the Method object is quite opaque and it is mostly
 the name that is interesting. Methods are callable and that is what matters.
 But for the machine the structure is essential to the working of the machine.
 And how methods actually provide the callable functionality is the topic of the rest of this chapter.
@@ -12,59 +13,28 @@ The diagram below gives an overview of the classes involved.
 
 ![Method diagram](../diagrams/control.png)
 
-### MethodSource
+### Source and Binary
 
-The MethodSource shown in the diagram is not related to program source code. It holds the virtual
-machine instructions from which we can create machine instructions. The structure in which the
-instructions are store is explained below, here we just want to draw attention to the fact that the
-relationship from Method to MethodSource is not 1 to 1 as one might expect, but 1 to m. The exact
-number of m depends on the number of types, arguments and variables used in the function, and
-also on the implementation.
-
-To illustrate the MethodSource for a minimal function Integer.add taking only one argument b,
-in a minimal system with 2 types (reference and integer). This is actually a Parfait function, but
-if you could write it in code, it would be something like, test b that it is Integer. If so do a
-basic add, check for overflow. If the first check fails you raise and if the second fails you
-delegate to some BigInteger class. If this would be compiled, it would result in two MethodSource
-objects, basically one for the case where b is an Integer and one for when it is an Object.
-The first MethodSource would do the basic addition and the second would unconditionally raise the
-error. In the "body" of both MethodSources there would be total certainty about the type b has
-
-The maximum number of MethodSources (m) is the number of types to the power of all variables,
-including arguments. While this may seem a lot, it is in most cases quite low as oo programs
-have small methods with few arguments.
-Also in a more advanced implementation many of the permutations of types are unused
-and could thus be created on demand.
+The method keeps keeps it's source in two forms. The parsed ast is kept, mostly for later inining.
+And the generated stream of instructions is later used to assemble a binary form. This is stored
+as the Code.
 
 
-### Blocks
+### Labels and instructions
 
-The idea of Methods is that they are callable and execute code.
-In the object machine Code is represented as a sequence of instructions.
+In the object machine Code is represented as a linked list of instructions.
 The exact definition of the Instructions will be a subsequent chapter,
 here we just want to explain the parts of the hierarchy that pertains to flow control,
 as this influences the structure of the Method.
 
-We can see from the diagram that the Call instruction holds a reference to a Method,
-obviously the method that is to be executed when the instruction is executed.
+We can see from the diagram that the Call instruction holds a reference to a Label,
+the start Label of the method that is to be executed when the instruction is executed.
 But to implement control structures we also need a jump or Branch instruction.
 Branches have been banned from programming languages, where they are often called goto,
 for a good reason, namely they are so low level as to be difficult to understand.
 Instead languages use higher level control structures. But to implement these control structures,
 we do need a Branch, and so we also need a place for a branch to branch too.
-In assembler these places are called labels.
-
-If one looks at instruction sequences from a control flow perspective they fall
-into little linear chunks, interspersed by calls and branches. We call such a
-linear sequence of instructions a Block, and with that we can see that only
-Blocks are legal points to branch to.
-
-So a Branch instruction holds a reference of the Block it jumps to.
-A Block in turn is a linear sequence of Instructions and if it contains a Call
-or Branch instruction it does so as it's last instruction.
-Methods hold a sequence of Blocks, and if a Block does not call or branch,
-control flows implicitly to the next Block.
-
+As in assembler we call these places labels.
 
 ### Calling
 
@@ -99,37 +69,29 @@ we define a Message class with the following attributes:
 - Name, the name of the function to be called on the *receiver*
 - *receiver* , the object receiving the message
 - arguments, an array object containing the arguments in order. Arguments are typed values as described above.
-- return address
-- exceptional return address
+- return addresses (per type and exceptional)
 - Frame object for local and temporary variables
 
 A Message is the basis for message sending that is the basis of object oriented programming.
 Sending a message involves finding the right Method and calling that. So all sending boils down to
-calling a method.
+calling a method, which is what happens when an object "receives" a message.
 
 #### Calling
 
 Calling a Method is relatively simple: We acquire a message (see below) and fill in the data,
 arguments, method name and receiver. Then we have to match the arguments types against to find
-the right MethodSource to call.
-On the vm level we use an instruction to call the method. At
-register level this gets resolved to a machine call to the binary code.
+the right Code to call.
 
-#### Sending
-
-Sending a message involves a little more than the calling described above, but from a vm
-instruction level it is actually very similar. We gather arguments, message name and receiver.
-But instead of a Call Instruction we issue a Send Instruction.
-
-The implementation of the send instruction is one of the few that actually happens at the vm
-level. As mentioned, we need to find the function to call, and if we can not find any, we call
-*method_missing*. So we always resolve a Send to a Call.
+In fact, call is just a name for a branch that is meant to return. Soml is quite low level, and
+gives the programmer control over where to return to. So the caller, not the callee (as in stack
+based languages) determines the point of return. This feature is the basis of later concurrency
+features.
 
 
 ### Static Message Chain
 
 An interesting and not immediately obvious consequence of this design is the ease with which it is
-implemented. Specifically all message may be created at runtime and linked into a double linked
+implemented. Specifically all messages may be created at compile-time and linked into a double linked
 list. The forward link lets us easily make a new message available, and the backward link let's us
 return the previous state.
 
@@ -159,14 +121,11 @@ needs to be zeroed for garbage collection to work properly.
 
 ## Machines Objects
 
-The machine, being object oriented, must work on objects. In fact four objects are enough, and these
-are:
+The machine, being object oriented, must work on objects. In fact only one object is enough, and
+that is the current message. Everything needed is available from the message, with the possible help of
+globals. As usual in oo Systems, class objects (the objects referring to a named Class instance)
+is available by writing the class name as capital.
 
-- current message
-- receiver
-- frame
-- next message
-
-The machine only ever moves data around these four objects, and may change the objects themselves too.
-Anything that can not be achieved by that, requires a method call and thus requires onlly these
-four objects.
+And by available we mean that soml language features like object attribute getting/setting, calling
+methods etc (whilch then compile to register machine intructions) is all that is required to define
+the machines working.

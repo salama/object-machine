@@ -5,8 +5,10 @@ even with very or very very, similar goals.
 
 ### Mother Smalltalk
 
-Like no other work Smalltalk-80, and especially the "Blue book" Smalltalk-80: the language and it's implementation has influenced the success of object oriented thinking. Smalltalk is very pure in
-it's object oriented approach and tries to extend that as far as then possible into the implementation aspect.
+Like no other work Smalltalk-80, and especially the "Blue book" Smalltalk-80: the language and
+it's implementation has influenced the success of object oriented thinking.
+Smalltalk is very pure in it's object oriented approach and tries to extend that as far as possible
+into the implementation aspect.
 
 As much as possible that is in a C based implementation. The actual machine is an interpreter and
 as such can not be changed and only minimally inspected, by the programmer.
@@ -67,8 +69,4 @@ of the language core.
 
 So by using a c implementation (or a to c translation), one builds on the c machine, and thus
 never has complete control over the actual machine. The c compiler inserts code that cannot be
-changed.
-
-As this seems to be a stumbling point for many people who read about the object machine and it's
-implementation for the first time, there is a a Appendix dedicated to the c machine and it's
-properties.
+changed. There is a a Appendix dedicated to the c machine and it's properties.
