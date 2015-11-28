@@ -11,7 +11,7 @@ But for the machine the structure is essential to the working of the machine.
 And how methods actually provide the callable functionality is the topic of the rest of this chapter.
 The diagram below gives an overview of the classes involved.
 
-![Method diagram](../diagrams/control.png)
+![Method diagram](../../diagrams/control.png)
 
 ### Source and Binary
 

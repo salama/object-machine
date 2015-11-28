@@ -4,7 +4,7 @@ A dynamic object machine allows the programmer to access everything of the machi
 through  a well defined api. Even for a minimal system this requires Classes,
 Methods basic numeric integers and with supporting classes we come to the diagram below.
 
-![Vm Architecture](../diagrams/parfait.png)
+![Vm Architecture](../../diagrams/parfait.png)
 
 The diagram leaves out all detail of associations and functionality for clarity. We will go into
 all the aspects as needed in further chapters.

@@ -52,7 +52,7 @@ Instead of associating the object with it's Class directly, we associate it with
 the Layout with the Class it represents. The diagram below illustrates this,
 as an object (not class) diagram.
 
-![Object diagram](../diagrams/layout.png)
+![Object diagram](../../diagrams/layout.png)
 
 Each object has a reference to the layout for this Object. But the layout defines the types
 , and if applicable, names that the object holds. An object *may* hold
