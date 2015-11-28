@@ -3,7 +3,7 @@
 ## Object file format
 
 For completeness we add a brief description of the object file format used by the object machine.
-This is what makes the machine language independent.
+Sof is not essential to the Machine, but was used in a previous version. 
 
 The format is not unlike yaml, but much more compact in that it allows several items on one line.
 Also it is specific to the object machine, and as such uses class names un-scoped.

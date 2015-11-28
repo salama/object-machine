@@ -8,8 +8,8 @@ we do not want to make a general point about c being bad in any way. It is only 
 about c's suitability for writing a pure object oriented system as discussed in the beginning of the
 book.
 
-Also, c like all higher languages, has been created to be able to write higher level code and
-not have to deal with the complexities of the underlying hadware. In this ir works well, but off
+Also c, like all higher languages, has been created to be able to write higher level code and
+not have to deal with the complexities of the underlying hardware. In this it works well, but off
 course there are choices that were made and not all of them are obvious when one doesn't know
 assembler.
 
