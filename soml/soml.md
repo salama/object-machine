@@ -1,9 +1,3 @@
----
-layout: soml
-title: Salama object machine language
----
-
-
 #### Top down designed language
 
 Soml is a language that is designed to be compiled into, rather than written, like
@@ -27,7 +21,7 @@ model is kept quite simple in that objects are always small multiples of the cac
 hardware machine. We use object encapsulation to build up larger looking objects from these
 basic blocks.
 
-The calling convention is also object oriented, not stack based*. Message objects used to
+The calling convention is also object oriented, not stack based\*. Message objects used to
 define the data needed for invocation. They carry arguments, a frame and return addresses.
 In Soml return addresses are pre-calculated and determined by the caller, and yes, there
 are several. In fact there is one return address per masic type, plus one for exception.
@@ -40,20 +34,21 @@ classes that can be accessed by writing the class name in soml source.
 
 ##### Syntax and runtime
 
-Soml syntax is a mix between ruby and c. I is like ruby in the sense that semicolons and even
+Soml syntax is a mix between ruby and c. It is like ruby in the sense that semicolons and even
 newlines are not neccessary unless they are. It still uses braces, but that will probably
 be changed. <br/>
 But off course it is typed, so in argument or variable definitions the type must be specified
 like in c. Types are classes, but int may be used for brevity instead of Integer. Return
-types are also declared, though more for statci analysis. As mentioned any function may return
-to differernt addresses according to type. The compiler automatically inserts erros for
-return typesa that are not handled by the caller. <br/>
-The complete syntax and their translation is discussed <a href="syntax.html"> here </a>
+types are also declared, though more for static analysis. As mentioned any function may return
+to different addresses according to type. The compiler automatically inserts errors for
+return types that are not handled by the caller.
+
+The complete syntax and their translation is discussed in the next chapter.
 
 As soml is the base for dynamic languages, all compile information is recorded in the runtime.
-All inforamtion is off course object oriented, ie in the form off objects. This means a class
-hierachy and this itself is off course part of the runtime. The runtime, Parfait, is kept
-to a minnimum, currently around 15 classes, described in detail <a href="parfait.html">
+The information is off course object oriented, in the form off objects. This means a class
+hierarchy and this itself is off course part of the runtime. The runtime, Parfait, is kept
+to a minimum, currently around 15 classes, described in detail <a href="parfait.html">
 here </a>. <br/>
 Historically Parfait has been coded in ruby, as it was first needed in the compiler.
 This had the additional benefit of providing solid test cases for the functionality.

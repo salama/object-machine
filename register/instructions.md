@@ -9,64 +9,97 @@ This does mean though that the names used are traditionally cryptic.
 
 As this is not the focus of the book, we will keep it short and refer to the actual code for more
 details.
-Also the next chapter will give a very brief overview of what passes are implemented,
-and how those implement the object machine.
 
 ![Instructios](../diagrams/instructions.png)
 
+The general rule for data moving instructions is *from -> to*. This may be the other way around
+from some assembler notations, but it is more natural.
 
-### GetSlot
+The instructions fall into several categories, data movement, control flow, arithmetic and system call.
 
-While we have one instruction to move data in the object machine (Set),
-we need three in the Register Machine, to from and between registers.
+### Data movement
 
-GetSlot moves what is essentially an instance variable to a register.
-Often the register will be one of the scratch ones, but to implement the calling logic,
-the first four (corresponding to the object machine objects) must be set too.
+#### GetSlot
 
-GetSlot uses an object reference and an index, but the reference must be given as a register name.
-It moves the data at that index to the register given as first parameter.
+GetSlot moves what is essentially an instance variable (the slot) to a register.
 
-## SetSlot
+GetSlot uses an object reference and an index that describes the slot. And a Register to which that
+data is moved. The index may be an integer constant or a register name.
+
+#### SetSlot
 
 SetSlot is in essence the reverse of GetSlot, it stores data, given as a register name,
 at the offset into the referred object.
 
-We will see below, that a Get/SetSlot combination  is **not** an implementation of Set,
-as type information needs to be updated.
+#### Get and SetByte
 
-### RegisterTransfer
+Get and Set byte are very similar to the Get and SetSlot instructions, but as the name suggests
+they only transfer a byte, not a machine word. These instructions are interesting manly for
+byte buffers and string manipulation, whereas Get and Set slot make the whole oo machinery work.
 
-RegisterTransfer transfers data from one register to another.
-This is used in the calling setup and message/frame generation.
-Like above Get/Set the instruction does not know about the object machine types.
+##### RegisterTransfer
 
-### SaveReturn
+RegisterTransfer copies data from one register to another.
 
-SaveReturn is very much like a SetSlot, but the data is implicit, namely the return address.
-The instruction abstracts the place where the actual machine stores the address,
-which may be the stack, or a register, in a real machine.
-The address is stored in the register/offset combination given.
-
-### FunctionCall
-
-Transfers control to the given Method. At register level this does not do any setup or other,
-so for the Object Machine FunctionCall implementation register shuffling has to happen.
-
-### RegisterMain
-
-This instruction sets up the machine and starts execution at the method given.
-This is separate from the FunctionCall to allow for different implementations of both
-the set and the initial control transfer.
-
-A Main may have to do address translation for the objects loaded if the exe is loaded
-to a different address.
-
-### LoadConstant
+#### LoadConstant
 
 Load the given Constant into the given register. Constants may be object references or integers.
+Object references are loaded in a position independent way by calculating offsets to the pc.
 
-### FunctionReturn
+### Control Flow
 
-Return from a Function. The return address is given as an offset to a base register address,
-as a reverse to the SaveReturn.
+#### Branch
+
+Branch is the base class for all Branches. The base class represents the unconditional branch, or
+jump.
+
+Branches must jump to labels. Labels mark the start of methods and also statements when they are
+needed.
+
+#### Conditional Branches
+
+There are five derived classes from Branch which represent conditional Branches. The names IfZero,
+IfNotzero, IfPlus , IfMinus and IfOverflow pretty much explain the conditions.
+
+Like in cpu's the model is that the previous instruction sets the flags that the names suggest and
+the branch tests the flags.
+
+#### FunctionCall
+
+A Function call is really an unconditional branch in this model. The class holds a reference to the
+method, and the jump is to the start label of the method.
+
+Nothing else is implied in the instruction, the compiler (not the runtime) sets up the return
+address in the message.
+
+#### FunctionReturn
+
+Also a FunctionReturn is really an unconditional jump. It takes as it's target a Slot, much like the
+GetSlot (a register and an index). The instruction retrieves the address from the slot and jumps to
+it.
+
+This makes the caller responsible for setting up the return address, which in a normal call is the
+label following the call.
+
+### Arithmetic
+
+Arithmetic, the operation on integers, are modeled as a single instruction, the
+**OperatorInstruction**. The OperatorInstruction takes two registers and the operator symbol.
+
+The result of the operation is left in the first register, so the operation is destructive.
+
+Notice also that since two registers are required, and constants will have to be loaded before.
+At the cpu level there are usually more efficient ways of doing this, but we leave that as an
+optimisation. This makes the model interaction with expressions much cleaner.
+
+### System Call
+
+The System calls is not listed under flow control, because from the register machine level
+perspective it is a linear operation. It is in fact closer to the OperatorInstruction albeit
+with possibly more registers, in that it resolves the registers to a result, stored in register 0.
+
+Since Register 0 is the pinned Message, the implementation takes care to move the massage out of
+the way before the syscall and back after.
+
+The Syscall holds only a name describing the action. Resolving the name to an number for a specific
+os is part of the implementation.

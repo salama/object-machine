@@ -1,10 +1,4 @@
----
-layout: soml
-title: Soml Syntax
----
-
-
-#### Top level Class and methods
+#### Class and methods
 
 The top level declarations in a file may only be class definitions
 
@@ -14,14 +8,14 @@ The top level declarations in a file may only be class definitions
       end
     end
 
-The class hierarchy is explained in [here](./parfait.html), but you can leave out the superclass
-and Object will be assumed.
+The class hierarchy is explained in [the chapter on Parfait](./parfait.html). The superclass
+may be left out and Object will be assumed.
 
 Methods must be typed, both arguments and return. Generally class names serve as types, but int can
 be used as a shortcut for Integer.
 
-Code may not be outside method definitions, like in ruby. A compiled program starts at the builtin
-method __init__, that does the inital setup, an then jumps to Object.main
+Code may not be outside method definitions, like may in ruby. A compiled program starts at the builtin
+method __init__, that does the initial setup, an then jumps to Object.main
 
 Classes are represented by class objects and methods my Method objects, so all information is available
 at runtime.
@@ -48,9 +42,8 @@ field definitions, and are basically instance variables, but not hidden (see bel
 The example below shows how to define local variables at the same time. Notice chaining, both for
 field access and call, is not allowed.
 
-      Layout l = self.layout
-      Class  c = l.object_class
-      Word   n = c.name
+      self.layout
+      l.object_class
 
 A **Call expression** is a method call that resolves to the methods return value. If no receiver is
 specified, self (the current receiver) is used. The receiver may be any of the basic expressions
@@ -99,7 +92,7 @@ without the possible else.
         ....
       end
 
-A **return statement** return a value from the current functions. There are no void functions.
+A **return statement** returns a value from the current functions. There are no void functions.
 
     return 5
 
@@ -131,8 +124,8 @@ Any of the expressions, basic, call, operator, field access, may be assigned.
 ### Code generation and scope
 
 Compiling generates two results simultaneously. The more obvious code for a function, but also an
-object structure of classes etc that capture the declarations. To understand the code part better
-the register abstraction should be studied, and to understand the object structure the runtime.
+object structure of classes etc that capture the declarations. To code part is explained in the
+chapter on the register machine, and the object structure is explained in the chapter on Parfait.
 
 The register machine abstraction is very simple, and so is the code generation, in favour of a simple
 model. Especially in the area of register assignment, there is no magic and only a few simple rules.

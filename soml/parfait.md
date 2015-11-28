@@ -1,9 +1,3 @@
----
-layout: soml
-title: Parfait, soml's runtime
----
-
-
 #### Overview
 
 Soml, like ruby, has open classes. This means that a class can be added to by loading another file
