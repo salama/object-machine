@@ -13,14 +13,14 @@ In soml object is not the root of the class hierarchy, but Value is. Integer, Fl
 derived from Value. So an integer is *not* an object, but still has a class and methods, just no
 instance variables.
 
-### Layout and Class
+### Type and Class
 
-Each object has a layout that describes the instance variables and types of the object. It also
-reference the class of the object. Layout objects are constant, may not be changed over their
-lifetime. When a field is added to a class, a new layout is created.
+Each object has a type that describes the instance variables and basic types of the object. It also
+reference the class of the object. Type objects are constant, may not be changed over their
+lifetime. When a field is added to a class, a new type is created.
 
 A Class describes a set of objects that respond to the same methods (methods are store in the class).
-A Layout describes a set of objects that have the same instance variables.
+A Type describes a set of objects that have the same instance variables.
 
 ### Method, Message and Frame
 

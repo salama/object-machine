@@ -6,9 +6,9 @@ is not supported, only association.
 
 Another common feature for all objects is that they have a class, and without using class
 inheritance this will default to Object. Unlike other designs, we do not store the class directly
-in the object, but use a class called Layout as a mediator. Still, the normal object oriented
+in the object, but use a class called Type as a mediator. Still, the normal object oriented
 assumption is enforced, namely that the class of an object may not be changed during it's life-cycle.
-More about the Layout below.
+More about the Type below.
 
 ### Values
 
@@ -33,13 +33,13 @@ This works for the minimal two basic types of integer and reference but has seve
 - incurs a high run-time cost for masking, unmasking and type checking.
 
 All four of those points are unacceptable, and so we choose to encode the value's type in an
-external (though implict) fashion. This is explained in the layout section below.
+external (though implicit) fashion. This is explained in the type section below.
 
 To repeat, objects are made up of values. Values are represented by immutable binary patterns that
 are nevertheless typed. In our implementation value types are stored external to the value,
 but in a silicon implementation it would be beneficial to store the type with the value.
 
-### Layout and Class
+### Type and Class
 
 Traditionally objects have a minimum of one association, the class. In some systems the class serves
 the double role of specifying what variables/methods an object has and how those are arranged.
@@ -48,24 +48,24 @@ and methods to objects at run-time. And while it is possible to add this to clas
 it can easily be somewhat imprecise (having some objects of a class that have a certain variable,
 but others not), and easily inefficient (when changing all objects of a class to hold nil values, eg).
 
-Instead of associating the object with it's Class directly, we associate it with it's Layout and
-the Layout with the Class it represents. The diagram below illustrates this,
+Instead of associating the object with it's Class directly, we associate it with it's Type and
+the Type with the Class it represents. The diagram below illustrates this,
 as an object (not class) diagram.
 
-![Object diagram](../../diagrams/layout.png)
+![Object diagram](../../diagrams/types.png)
 
-Each object has a reference to the layout for this Object. But the layout defines the types
+Each object has a reference to the type for this Object. But the type defines the value types
 , and if applicable, names that the object holds. An object *may* hold
 any amount of instance variables (logically).
-The Layout, being an Object, also has a layout (with type info), but detail is omitted here for clarity.
-The objects Layout holds the names of all the objects instance variables. The Layout also holds a
+The Type, being an Object, also has a type (with type info), but detail is omitted here for clarity.
+The objects Type holds the names of all the objects instance variables. The Type also holds a
 reference to the class for the Object.
 
 As we want a flexible design, the Class object is mutable at any time. The programmer may add,
 or remove variables and methods, even change the inheritance of the class. But it is important
-to note that the Layout is **immutable**. This means that when the programmer adds an instance
-variable, a **new** Layout is created. This is so that the Layout of other existing objects stays
-valid, and off course if or when there are no such other objects the layout will be collected.
+to note that the Type is **immutable**. This means that when the programmer adds an instance
+variable, a **new** Type is created. This is so that the Type of other existing objects stays
+valid.
 
 ### Implicit type
 

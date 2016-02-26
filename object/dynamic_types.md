@@ -30,7 +30,7 @@ When compiling ruby all types are known by the compiler at program start.
 The values that are not assigned a known type, and thus have no start value, may either be deduced
 through later assignments, or assigned a the object type.
 
-All type information is recorded in the Layouts of the objects created at compile time. It helps
+All type information is recorded in the Types of the objects created at compile time. It helps
 to remember that there is no information outside objects, also at runtime.
 
 So when the program starts, it does so in a known state.
@@ -74,7 +74,7 @@ object to integer, a single association in the graph has to be followed to find 
 descriptor.
 
 The change that the compiler generates is the same for the static and dynamic case. The type
-descriptor of the object is changed. Not the Layout, or class, just the type descriptor.
+descriptor of the object is changed. Not the Type, or class, just the type descriptor.
 
 ### Method signatures
 

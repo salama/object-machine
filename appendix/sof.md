@@ -3,7 +3,7 @@
 ## Object file format
 
 For completeness we add a brief description of the object file format used by the object machine.
-Sof is not essential to the Machine, but was used in a previous version. 
+Sof is not essential to the Machine, but was used in a previous version.
 
 The format is not unlike yaml, but much more compact in that it allows several items on one line.
 Also it is specific to the object machine, and as such uses class names un-scoped.
@@ -78,9 +78,9 @@ Virtual::Block(:position => 440, :length => -1, :name => :return)
 Especially in the object machines runtime, some classes derive from Array. The notation for
 any object of class that derives from Array or Hash is to append the above Notation for Hash or Array.
 
-For example the Class Layout, that derives from Array. As an Array it stores Symbols, so the instance that represents the Layout of the Module is
+For example the Class Type, that derives from Array. As an Array it stores Symbols, so the instance that represents the Type of the Module is
 ```
-Parfait::Layout(:object_class => ->Module, :layout => ->Layout_Layout) - :name
+Parfait::Type(:object_class => ->Module, :type => ->Type_Type) - :name
    - :instance_methods
    - :super_class
    - :meta_class
@@ -123,17 +123,17 @@ Sof is meant to write object files. Below is an example of a minimal object spac
 ```
 &space Parfait::Space()
  :classes - :Value => &Value Parfait::Class(:name => :Value, :instance_methods => [])
-   :object_layout Parfait::Layout(:object_class => ->Value, :layout => ->Layout_Layout)
-   :layout &Class_Layout Parfait::Layout(:object_class => ->Class, :layout => ->Layout_Layout) - :object_layout
+   :object_type Parfait::Type(:object_class => ->Value, :type => ->Type_Type)
+   :type &Class_Type Parfait::Type(:object_class => ->Class, :type => ->Type_Type) - :object_type
    - :name
    - :instance_methods
    - :super_class
    - :meta_class
- - :Integer => &Integer Parfait::Class(:name => :Integer, :instance_methods => [], :super_class => ->Value, :layout => ->Class_Layout)
-   :object_layout Parfait::Layout(:object_class => ->Integer, :layout => ->Layout_Layout)
- - :Kernel => &Kernel Parfait::Class(:name => :Kernel, :super_class => ->Value, :layout => ->Class_Layout)
-   :instance_methods - &putstring Parfait::Method(:layout => ->Method_Layout, :for_class => ->Kernel, :name => :putstring, :arg_names => [], :locals => [], :tmps => [])
-     :code Parfait::BinaryCode(:layout => ->BinaryCode_Layout, :name => :putstring)
+ - :Integer => &Integer Parfait::Class(:name => :Integer, :instance_methods => [], :super_class => ->Value, :type => ->Class_Type)
+   :object_type Parfait::Type(:object_class => ->Integer, :type => ->Type_Type)
+ - :Kernel => &Kernel Parfait::Class(:name => :Kernel, :super_class => ->Value, :type => ->Class_Type)
+   :instance_methods - &putstring Parfait::Method(:type => ->Method_Type, :for_class => ->Kernel, :name => :putstring, :arg_names => [], :locals => [], :tmps => [])
+     :code Parfait::BinaryCode(:type => ->BinaryCode_Type, :name => :putstring)
      :info Virtual::CompiledMethodInfo(:return_type => Virtual::Unknown, :constants => [])
       :blocks - Virtual::Block(:name => :enter)
         :codes - Register::SaveReturn(:register => :r0, :index => 1)
@@ -153,8 +153,8 @@ Sof is meant to write object files. Below is an example of a minimal object spac
         - Register::GetSlot(:value => :r1, :reference => :r0, :index => 3)
         - Register::GetSlot(:value => :r2, :reference => :r0, :index => 6)
         - Register::FunctionReturn(:register => :r0, :index => 1)
-   - Parfait::Method(:layout => ->Method_Layout, :for_class => ->Kernel, :name => :__init__, :arg_names => [], :locals => [], :tmps => [])
-     :code Parfait::BinaryCode(:layout => ->BinaryCode_Layout, :name => :__init__)
+   - Parfait::Method(:type => ->Method_Type, :for_class => ->Kernel, :name => :__init__, :arg_names => [], :locals => [], :tmps => [])
+     :code Parfait::BinaryCode(:type => ->BinaryCode_Type, :name => :__init__)
      :info Virtual::CompiledMethodInfo(:return_type => Virtual::Integer, :constants => [])
       :blocks - Virtual::Block(:name => :enter)
         :codes - Register::SaveReturn(:register => :r0, :index => 1)
@@ -184,10 +184,10 @@ Sof is meant to write object files. Below is an example of a minimal object spac
         - Register::GetSlot(:value => :r1, :reference => :r0, :index => 3)
         - Register::GetSlot(:value => :r2, :reference => :r0, :index => 6)
         - Register::FunctionReturn(:register => :r0, :index => 1)
-   :object_layout Parfait::Layout(:object_class => ->Kernel, :layout => ->Layout_Layout)
- - :Object => &Object Parfait::Class(:name => :Object, :super_class => ->Kernel, :layout => ->Class_Layout)
-   :instance_methods - &main Parfait::Method(:layout => ->Method_Layout, :for_class => ->Object, :name => :main, :arg_names => [], :locals => [], :tmps => [])
-     :code Parfait::BinaryCode(:layout => ->BinaryCode_Layout, :name => :main)
+   :object_type Parfait::Type(:object_class => ->Kernel, :type => ->Type_Type)
+ - :Object => &Object Parfait::Class(:name => :Object, :super_class => ->Kernel, :type => ->Class_Type)
+   :instance_methods - &main Parfait::Method(:type => ->Method_Type, :for_class => ->Object, :name => :main, :arg_names => [], :locals => [], :tmps => [])
+     :code Parfait::BinaryCode(:type => ->BinaryCode_Type, :name => :main)
      :info Virtual::CompiledMethodInfo(:return_type => Virtual::Unknown, :constants => [:Hello])
       :blocks - Virtual::Block(:name => :enter)
         :codes - Register::SaveReturn(:register => :r0, :index => 1)
@@ -238,61 +238,61 @@ Sof is meant to write object files. Below is an example of a minimal object spac
         - Register::GetSlot(:value => :r1, :reference => :r0, :index => 3)
         - Register::GetSlot(:value => :r2, :reference => :r0, :index => 6)
         - Register::FunctionReturn(:register => :r0, :index => 1)
-   :object_layout Parfait::Layout(:object_class => ->Object, :layout => ->Layout_Layout)
- - :Word => &Word Parfait::Class(:name => :Word, :instance_methods => [], :super_class => ->Object, :layout => ->Class_Layout)
-   :object_layout Parfait::Layout(:object_class => ->Word, :layout => ->Layout_Layout)
- - :List => &List Parfait::Class(:name => :List, :instance_methods => [], :super_class => ->Object, :layout => ->Class_Layout)
-   :object_layout Parfait::Layout(:object_class => ->List, :layout => ->Layout_Layout)
- - :Message => &Message Parfait::Class(:name => :Message, :instance_methods => [], :super_class => ->Object, :object_layout => ->Message_Layout, :layout => ->Class_Layout)
- - :MetaClass => &MetaClass Parfait::Class(:name => :MetaClass, :instance_methods => [], :super_class => ->Object, :layout => ->Class_Layout)
-   :object_layout Parfait::Layout(:object_class => ->MetaClass, :layout => ->Layout_Layout)
-   :object_layout Parfait::Layout(:object_class => ->MetaClass, :layout => ->Layout_Layout)
- - :BinaryCode => &BinaryCode Parfait::Class(:name => :BinaryCode, :instance_methods => [], :super_class => ->Word, :layout => ->Class_Layout)
-   :object_layout &BinaryCode_Layout Parfait::Layout(:object_class => ->BinaryCode, :layout => ->Layout_Layout)
- - :Space => &Space Parfait::Class(:name => :Space, :instance_methods => [], :super_class => ->Object, :object_layout => ->Space_Layout, :layout => ->Class_Layout)
- - :Frame => &Frame Parfait::Class(:name => :Frame, :instance_methods => [], :super_class => ->Object, :object_layout => ->Frame_Layout, :layout => ->Class_Layout)
- - :Layout => &Layout Parfait::Class(:name => :Layout, :instance_methods => [], :super_class => ->List, :object_layout => ->Layout_Layout, :layout => ->Class_Layout)
- - :Class => &Class Parfait::Class(:name => :Class, :instance_methods => [], :super_class => ->Module, :object_layout => ->Class_Layout, :layout => ->Class_Layout)
- - :Dictionary => &Dictionary Parfait::Class(:name => :Dictionary, :instance_methods => [], :super_class => ->Object, :layout => ->Class_Layout)
-   :object_layout Parfait::Layout(:object_class => ->Dictionary, :layout => ->Layout_Layout) - :keys
+   :object_type Parfait::Type(:object_class => ->Object, :type => ->Type_Type)
+ - :Word => &Word Parfait::Class(:name => :Word, :instance_methods => [], :super_class => ->Object, :type => ->Class_Type)
+   :object_type Parfait::Type(:object_class => ->Word, :type => ->Type_Type)
+ - :List => &List Parfait::Class(:name => :List, :instance_methods => [], :super_class => ->Object, :type => ->Class_Type)
+   :object_type Parfait::Type(:object_class => ->List, :type => ->Type_Type)
+ - :Message => &Message Parfait::Class(:name => :Message, :instance_methods => [], :super_class => ->Object, :object_type => ->Message_Type, :type => ->Class_Type)
+ - :MetaClass => &MetaClass Parfait::Class(:name => :MetaClass, :instance_methods => [], :super_class => ->Object, :type => ->Class_Type)
+   :object_type Parfait::Type(:object_class => ->MetaClass, :type => ->Type_Type)
+   :object_type Parfait::Type(:object_class => ->MetaClass, :type => ->Type_Type)
+ - :BinaryCode => &BinaryCode Parfait::Class(:name => :BinaryCode, :instance_methods => [], :super_class => ->Word, :type => ->Class_Type)
+   :object_type &BinaryCode_Type Parfait::Type(:object_class => ->BinaryCode, :type => ->Type_Type)
+ - :Space => &Space Parfait::Class(:name => :Space, :instance_methods => [], :super_class => ->Object, :object_type => ->Space_Type, :type => ->Class_Type)
+ - :Frame => &Frame Parfait::Class(:name => :Frame, :instance_methods => [], :super_class => ->Object, :object_type => ->Frame_Type, :type => ->Class_Type)
+ - :Type => &Type Parfait::Class(:name => :Type, :instance_methods => [], :super_class => ->List, :object_type => ->Type_Type, :type => ->Class_Type)
+ - :Class => &Class Parfait::Class(:name => :Class, :instance_methods => [], :super_class => ->Module, :object_type => ->Class_Type, :type => ->Class_Type)
+ - :Dictionary => &Dictionary Parfait::Class(:name => :Dictionary, :instance_methods => [], :super_class => ->Object, :type => ->Class_Type)
+   :object_type Parfait::Type(:object_class => ->Dictionary, :type => ->Type_Type) - :keys
    - :values
- - :Method => &Method Parfait::Class(:name => :Method, :instance_methods => [], :super_class => ->Object, :layout => ->Class_Layout)
-   :object_layout &Method_Layout Parfait::Layout(:object_class => ->Method, :layout => ->Layout_Layout) - :name
+ - :Method => &Method Parfait::Class(:name => :Method, :instance_methods => [], :super_class => ->Object, :type => ->Class_Type)
+   :object_type &Method_Type Parfait::Type(:object_class => ->Method, :type => ->Type_Type) - :name
    - :code
    - :arg_names
    - :locals
    - :tmps
- - :Module => &Module Parfait::Class(:name => :Module, :instance_methods => [], :super_class => ->Object, :layout => ->Class_Layout)
-   :object_layout Parfait::Layout(:object_class => ->Module, :layout => ->Layout_Layout) - :name
+ - :Module => &Module Parfait::Class(:name => :Module, :instance_methods => [], :super_class => ->Object, :type => ->Class_Type)
+   :object_type Parfait::Type(:object_class => ->Module, :type => ->Type_Type) - :name
    - :instance_methods
    - :super_class
    - :meta_class
  :frames - ->1
- - Parfait::Frame(:layout => ->Frame_Layout)
- - Parfait::Frame(:layout => ->Frame_Layout)
- - Parfait::Frame(:layout => ->Frame_Layout)
- - Parfait::Frame(:layout => ->Frame_Layout)
+ - Parfait::Frame(:type => ->Frame_Type)
+ - Parfait::Frame(:type => ->Frame_Type)
+ - Parfait::Frame(:type => ->Frame_Type)
+ - Parfait::Frame(:type => ->Frame_Type)
  :messages - ->2
- - Parfait::Message(:layout => ->Message_Layout)
- - Parfait::Message(:layout => ->Message_Layout)
- - Parfait::Message(:layout => ->Message_Layout)
- - Parfait::Message(:layout => ->Message_Layout)
+ - Parfait::Message(:type => ->Message_Type)
+ - Parfait::Message(:type => ->Message_Type)
+ - Parfait::Message(:type => ->Message_Type)
+ - Parfait::Message(:type => ->Message_Type)
  :next_message &2 Parfait::Message()
-  :layout &Message_Layout Parfait::Layout(:object_class => ->Message, :layout => ->Layout_Layout)
+  :type &Message_Type Parfait::Type(:object_class => ->Message, :type => ->Type_Type)
  :next_frame &1 Parfait::Frame()
-  :layout &Frame_Layout Parfait::Layout(:object_class => ->Frame, :layout => ->Layout_Layout) - :locals
+  :type &Frame_Type Parfait::Type(:object_class => ->Frame, :type => ->Type_Type) - :locals
   - :tmps
- - Parfait::Message(:layout => ->Message_Layout)
- - Parfait::Message(:layout => ->Message_Layout)
- - Parfait::Message(:layout => ->Message_Layout)
- - Parfait::Message(:layout => ->Message_Layout)
+ - Parfait::Message(:type => ->Message_Type)
+ - Parfait::Message(:type => ->Message_Type)
+ - Parfait::Message(:type => ->Message_Type)
+ - Parfait::Message(:type => ->Message_Type)
  :next_message &2 Parfait::Message()
-  :layout &Message_Layout Parfait::Layout(:object_class => ->Message, :layout => ->Layout_Layout)
+  :type &Message_Type Parfait::Type(:object_class => ->Message, :type => ->Type_Type)
  :next_frame &1 Parfait::Frame()
-  :layout &Frame_Layout Parfait::Layout(:object_class => ->Frame, :layout => ->Layout_Layout) - :locals
+  :type &Frame_Type Parfait::Type(:object_class => ->Frame, :type => ->Type_Type) - :locals
   - :tmps
- :layout &Space_Layout Parfait::Layout(:object_class => ->Space)
-  :layout &Layout_Layout Parfait::Layout(:object_class => ->Layout, :layout => ->Layout_Layout) - :object_class - :classes
+ :type &Space_Type Parfait::Type(:object_class => ->Space)
+  :type &Type_Type Parfait::Type(:object_class => ->Type, :type => ->Type_Type) - :object_class - :classes
  - :frames
  - :messages
  - :next_message

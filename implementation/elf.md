@@ -8,8 +8,8 @@ Strings are other simple objects that similarly transform easily to their binary
 assuming a utf8 encoding.
 
 Other objects contain a mix of integer and reference values that are binary encoded as well.
-The memory layout described above demands type encoding for all values and a layout reference
-for evey object.
+The memory layout described above demands type encoding for all values and a type reference
+for every object.
 
 For references and calls we need positions for all objects which are determined before assembly
 starts. Objects are laid out in the order they are stored in the ObjectSpace, but all Method
@@ -22,4 +22,3 @@ produce suitably, and sections of which  the text section contains the code.
 
 To help debugging, method names and object classes are exported. Currently the final result still
 has to be run with ld -N.
-

@@ -42,7 +42,7 @@ field definitions, and are basically instance variables, but not hidden (see bel
 The example below shows how to define local variables at the same time. Notice chaining, both for
 field access and call, is not allowed.
 
-      self.layout
+      self.type
       l.object_class
 
 A **Call expression** is a method call that resolves to the methods return value. If no receiver is
@@ -102,7 +102,7 @@ field, must be in class (not method) scope and may not be assigned to.
 
     class Class < Object
       field List instance_methods
-      field Layout object_layout
+      field Type instance_type
       field Word name
       ...
     end
